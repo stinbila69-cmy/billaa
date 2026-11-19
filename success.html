@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <title>BILLAYA | Order Success</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #F8F5F1;
+      color: #292725;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    /* ANNOUNCEMENT */
+    .announcement {
+      background: #594538;
+      color: white;
+      text-align: center;
+      padding: 10px;
+      font-size: 11px;
+      letter-spacing: 2px;
+    }
+
+    /* NAVBAR */
+    .navbar {
+      background: #F8F5F1;
+      padding: 18px 7%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .logo {
+      font-family: Georgia, serif;
+      font-size: 27px;
+      font-weight: bold;
+      letter-spacing: 4px;
+      color: #594538;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 27px;
+    }
+
+    .nav-links a {
+      color: #594538;
+      font-size: 12px;
+      letter-spacing: 1px;
+      transition: 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: #B7A18F;
+    }
+
+    /* SUCCESS SECTION */
+    .success-container {
+      max-width: 850px;
+      margin: 65px auto;
+      padding: 0 20px;
+    }
+
+    .success-card {
+      background: white;
+      padding: 45px;
+      text-align: center;
+      border: 1px solid #E8DCD0;
+    }
+
+    .success-icon {
+      width: 75px;
+      height: 75px;
+      border-radius: 50%;
+      background: #E8DCD0;
+      color: #594538;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 35px;
+      margin: 0 auto 25px;
+    }
+
+    .success-card h1 {
+      font-family: Georgia, serif;
+      font-size: 34px;
+      letter-spacing: 2px;
+      color: #594538;
+      margin-bottom: 15px;
+    }
+
+    .success-message {
+      color: #76665B;
+      font-size: 14px;
+      line-height: 1.8;
+      margin-bottom: 30px;
+    }
+
+    .order-number {
+      background: #F8F5F1;
+      padding: 18px;
+      margin-bottom: 30px;
+    }
+
+    .order-number p {
+      color: #9A8170;
+      font-size: 11px;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+    }
+
+    .order-number h3 {
+      color: #594538;
+      font-size: 19px;
+      letter-spacing: 1px;
+    }
+
+    /* ORDER DETAILS */
+    .order-details {
+      text-align: left;
+      border-top: 1px solid #E8DCD0;
+      padding-top: 25px;
+    }
+
+    .order-details h2 {
+      font-family: Georgia, serif;
+      font-size: 22px;
+      color: #594538;
+      margin-bottom: 20px;
+    }
+
+    .detail-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+      padding: 12px 0;
+      border-bottom: 1px solid #EEE7E1;
+      font-size: 13px;
+    }
+
+    .detail-row span:first-child {
+      color: #9A8170;
+    }
+
+    .detail-row span:last-child {
+      color: #594538;
+      text-align: right;
+      font-weight: bold;
+    }
+
+    /* PRODUCT LIST */
+    .product-section {
+      margin-top: 30px;
+      text-align: left;
+    }
+
+    .product-section h2 {
+      font-family: Georgia, serif;
+      font-size: 22px;
+      color: #594538;
+      margin-bottom: 15px;
+    }
+
+    .product-item {
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+      padding: 14px 0;
+      border-bottom: 1px solid #EEE7E1;
+      font-size: 13px;
+    }
+
+    .product-name {
+      color: #594538;
+      font-weight: bold;
+      line-height: 1.6;
+    }
+
+    .product-quantity {
+      color: #9A8170;
+      font-size: 12px;
+      margin-top: 5px;
+    }
+
+    .product-price {
+      color: #594538;
+      white-space: nowrap;
+    }
+
+    /* TOTAL */
+    .total-section {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid #D8C9BC;
+      margin-top: 25px;
+      padding-top: 20px;
+      color: #594538;
+      font-size: 17px;
+      font-weight: bold;
+    }
+
+    /* BUTTONS */
+    .success-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+      margin-top: 35px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 15px 25px;
+      font-size: 11px;
+      letter-spacing: 1.5px;
+      transition: 0.3s;
+    }
+
+    .btn-primary {
+      background: #594538;
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: #766052;
+    }
+
+    .btn-secondary {
+      border: 1px solid #594538;
+      color: #594538;
+    }
+
+    .btn-secondary:hover {
+      background: #E8DCD0;
+    }
+
+    .thank-you {
+      color: #9A8170;
+      font-size: 12px;
+      margin-top: 30px;
+      line-height: 1.7;
+    }
+
+    /* NO ORDER */
+    .no-order {
+      text-align: center;
+      background: white;
+      padding: 55px 25px;
+      border: 1px solid #E8DCD0;
+    }
+
+    .no-order h2 {
+      font-family: Georgia, serif;
+      color: #594538;
+      margin-bottom: 15px;
+    }
+
+    .no-order p {
+      font-size: 13px;
+      color: #76665B;
+      margin-bottom: 25px;
+      line-height: 1.7;
+    }
+
+    /* FOOTER */
+    .site-footer {
+      background: #594538;
+      color: white;
+      padding: 45px 7% 25px;
+      margin-top: 60px;
+    }
+
+    .site-footer-container {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 40px;
+      max-width: 1150px;
+      margin: auto;
+    }
+
+    .site-footer-logo {
+      font-size: 25px;
+      letter-spacing: 3px;
+      margin-bottom: 12px;
+    }
+
+    .site-footer-about p {
+      color: #E8DCD0;
+      font-size: 13px;
+      max-width: 300px;
+      line-height: 1.8;
+    }
+
+    .site-footer-links h3 {
+      font-size: 14px;
+      margin-bottom: 15px;
+      letter-spacing: 1px;
+    }
+
+    .site-footer-links a {
+      display: block;
+      color: #E8DCD0;
+      font-size: 13px;
+      margin-bottom: 9px;
+    }
+
+    .site-footer-links a:hover {
+      color: white;
+    }
+
+    .site-copyright {
+      border-top: 1px solid #9A8170;
+      text-align: center;
+      margin-top: 35px;
+      padding-top: 20px;
+      color: #E8DCD0;
+      font-size: 11px;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 650px) {
+      .navbar {
+        flex-direction: column;
+        gap: 17px;
+      }
+
+      .nav-links {
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 15px;
+      }
+
+      .success-card {
+        padding: 25px 20px;
+      }
+
+      .success-card h1 {
+        font-size: 27px;
+      }
+
+      .detail-row {
+        font-size: 12px;
+      }
+
+      .site-footer-container {
+        grid-template-columns: 1fr;
+        gap: 25px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ANNOUNCEMENT -->
+  <div class="announcement">
+    ELEGANCE MADE PERSONAL — DISCOVER YOUR STYLE
+  </div>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <a href="index.html" class="logo">BILLAYA</a>
+
+    <div class="nav-links">
+      <a href="index.html">HOME</a>
+      <a href="shop.html">SHOP</a>
+      <a href="about.html">ABOUT US</a>
+      <a href="contact.html">CONTACT</a>
+      <a href="wishlist.html">WISHLIST</a>
+      <a href="cart.html">
+        BAG (<span id="cartCount">0</span>)
+      </a>
+    </div>
+  </nav>
+
+  <!-- SUCCESS CONTENT -->
+  <main class="success-container">
+    <div id="successContent"></div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+
+    <div class="site-footer-container">
+
+      <div class="site-footer-about">
+        <div class="site-footer-logo">BILLAYA</div>
+        <p>
+          Discover your personal elegance with our
+          beautiful collection of women's accessories.
+        </p>
+      </div>
+
+      <div class="site-footer-links">
+        <h3>QUICK LINKS</h3>
+        <a href="index.html">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="about.html">About Us</a>
+        <a href="contact.html">Contact</a>
+      </div>
+
+      <div class="site-footer-links">
+        <h3>MY ACCOUNT</h3>
+        <a href="wishlist.html">My Wishlist</a>
+        <a href="cart.html">Shopping Bag</a>
+        <a href="checkout.html">Checkout</a>
+      </div>
+
+    </div>
+
+    <div class="site-copyright">
+      © 2026 BILLAYA Official Store. All Rights Reserved.
+    </div>
+
+  </footer>
+
+  <!-- JAVASCRIPT -->
+  <script>
+
+    // FORMAT RUPIAH
+    function formatRupiah(number) {
+      return "Rp " + Number(number || 0).toLocaleString("id-ID");
+    }
+
+    // PREVENT HTML INJECTION
+    function escapeHTML(value) {
+      return String(value ?? "").replace(/[&<>"']/g, function (character) {
+        return {
+          "&": "&amp;",
+          "<": "&lt;",
+          ">": "&gt;",
+          '"': "&quot;",
+          "'": "&#39;"
+        }[character];
+      });
+    }
+
+    // GET LAST ORDER
+    function getLastOrder() {
+      try {
+        return JSON.parse(localStorage.getItem("billayaLastOrder"));
+      } catch (error) {
+        return null;
+      }
+    }
+
+    // UPDATE CART COUNT
+    function updateCartCount() {
+      let cart = [];
+
+      try {
+        cart = JSON.parse(localStorage.getItem("billayaCart")) || [];
+      } catch (error) {
+        cart = [];
+      }
+
+      let totalItems = cart.reduce(function (total, item) {
+        return total + (Number(item.quantity) || 0);
+      }, 0);
+
+      document.getElementById("cartCount").textContent = totalItems;
+    }
+
+    // DISPLAY ORDER
+    function displaySuccess() {
+
+      const order = getLastOrder();
+      const content = document.getElementById("successContent");
+
+      if (!order || !order.customer || !Array.isArray(order.items)) {
+
+        content.innerHTML = `
+          <div class="no-order">
+            <h2>No Order Found</h2>
+            <p>
+              We couldn't find your recent order.
+              Please visit our shop to discover your favorite accessories.
+            </p>
+            <a href="shop.html" class="btn btn-primary">
+              VISIT OUR SHOP
+            </a>
+          </div>
+        `;
+
+        return;
+      }
+
+      let productsHTML = "";
+
+      order.items.forEach(function (item) {
+
+        const quantity = Math.max(1, Number(item.quantity) || 1);
+        const price = Number(item.price) || 0;
+        const itemTotal = price * quantity;
+
+        productsHTML += `
+          <div class="product-item">
+            <div>
+              <div class="product-name">
+                ${escapeHTML(item.name)}
+              </div>
+              <div class="product-quantity">
+                Quantity: ${quantity}
+              </div>
+            </div>
+
+            <div class="product-price">
+              ${formatRupiah(itemTotal)}
+            </div>
+          </div>
+        `;
+      });
+
+      content.innerHTML = `
+
+        <section class="success-card">
+
+          <div class="success-icon">✓</div>
+
+          <h1>ORDER CONFIRMED!</h1>
+
+          <p class="success-message">
+            Thank you for shopping with BILLAYA.<br>
+            Your order has been successfully placed.
+            We appreciate your trust in us.
+          </p>
+
+          <div class="order-number">
+            <p>YOUR ORDER NUMBER</p>
+            <h3>${escapeHTML(order.orderID || "-")}</h3>
+          </div>
+
+          <div class="order-details">
+
+            <h2>Customer Information</h2>
+
+            <div class="detail-row">
+              <span>Full Name</span>
+              <span>${escapeHTML(order.customer.fullName)}</span>
+            </div>
+
+            <div class="detail-row">
+              <span>Email</span>
+              <span>${escapeHTML(order.customer.email)}</span>
+            </div>
+
+            <div class="detail-row">
+              <span>Phone / WhatsApp</span>
+              <span>${escapeHTML(order.customer.phone)}</span>
+            </div>
+
+            <div class="detail-row">
+              <span>Shipping Address</span>
+              <span>
+                ${escapeHTML(order.customer.address)},
+                ${escapeHTML(order.customer.city)},
+                ${escapeHTML(order.customer.province)},
+                ${escapeHTML(order.customer.postalCode)}
+              </span>
+            </div>
+
+            <div class="detail-row">
+              <span>Order Date</span>
+              <span>${escapeHTML(order.orderDate || "-")}</span>
+            </div>
+
+            <div class="detail-row">
+              <span>Shipping Method</span>
+              <span>${escapeHTML(order.shippingMethod)}</span>
+            </div>
+
+            <div class="detail-row">
+              <span>Payment Method</span>
+              <span>${escapeHTML(order.paymentMethod)}</span>
+            </div>
+
+          </div>
+
+          <div class="product-section">
+
+            <h2>Order Summary</h2>
+
+            ${productsHTML}
+
+            <div class="detail-row">
+              <span>Subtotal</span>
+              <span>${formatRupiah(order.subtotal)}</span>
+            </div>
+
+            <div class="detail-row">
+              <span>Shipping Fee</span>
+              <span>${formatRupiah(order.shippingFee)}</span>
+            </div>
+
+            <div class="total-section">
+              <span>Total Payment</span>
+              <span>${formatRupiah(order.total)}</span>
+            </div>
+
+          </div>
+
+          <div class="success-buttons">
+            <a href="shop.html" class="btn btn-primary">
+              CONTINUE SHOPPING
+            </a>
+
+            <a href="index.html" class="btn btn-secondary">
+              BACK TO HOME
+            </a>
+          </div>
+
+          <p class="thank-you">
+            Elegance Made Personal.<br>
+            Thank you for being part of BILLAYA.
+          </p>
+
+        </section>
+      `;
+    }
+
+    // INITIALIZE PAGE
+    updateCartCount();
+    displaySuccess();
+
+  </script>
+
+</body>
+
+</html>

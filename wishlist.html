@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>BILLAYA | My Wishlist</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: #F8F5F1;
+      color: #292725;
+      font-family: Arial, sans-serif;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    /* ANNOUNCEMENT */
+    .announcement {
+      background: #594538;
+      color: white;
+      text-align: center;
+      padding: 10px;
+      font-size: 11px;
+      letter-spacing: 2px;
+    }
+
+    /* NAVBAR */
+    .navbar {
+      background: #F8F5F1;
+      padding: 18px 7%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .logo {
+      font-family: Georgia, serif;
+      font-size: 27px;
+      font-weight: bold;
+      letter-spacing: 4px;
+      color: #594538;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 27px;
+    }
+
+    .nav-links a {
+      color: #594538;
+      font-size: 12px;
+      letter-spacing: 1px;
+      transition: 0.3s;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: #B7A18F;
+    }
+
+    /* PAGE BANNER */
+    .page-banner {
+      height: 340px;
+      background:
+        linear-gradient(rgba(41, 39, 37, 0.30), rgba(41, 39, 37, 0.30)),
+        url("https://i.pinimg.com/736x/df/fa/29/dffa2922167649b25fd1214cb7d3c2d3.jpg");
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .page-banner h1 {
+      font-family: Georgia, serif;
+      font-size: 43px;
+      color: white;
+      letter-spacing: 4px;
+      margin-bottom: 15px;
+    }
+
+    .page-banner p {
+      color: white;
+      font-size: 14px;
+      letter-spacing: 1px;
+    }
+
+    /* WISHLIST SECTION */
+    .wishlist-section {
+      max-width: 1150px;
+      margin: auto;
+      padding: 60px 7% 80px;
+    }
+
+    .wishlist-heading {
+      margin-bottom: 30px;
+    }
+
+    .wishlist-heading h2 {
+      font-family: Georgia, serif;
+      color: #594538;
+      font-size: 28px;
+      margin-bottom: 8px;
+    }
+
+    .wishlist-heading p {
+      color: #82766D;
+      font-size: 13px;
+    }
+
+    /* WISHLIST GRID */
+    .wishlist-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 25px;
+    }
+
+    .wishlist-card {
+      background: white;
+      border-radius: 4px;
+      overflow: hidden;
+      box-shadow: 0 3px 12px rgba(0, 0, 0, 0.04);
+      transition: 0.3s;
+    }
+
+    .wishlist-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .wishlist-card img {
+      width: 100%;
+      height: 230px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .wishlist-details {
+      padding: 18px;
+    }
+
+    .wishlist-details h3 {
+      font-family: Georgia, serif;
+      color: #594538;
+      font-size: 17px;
+      margin-bottom: 10px;
+    }
+
+    .wishlist-price {
+      color: #8A6E5A;
+      font-size: 14px;
+      font-weight: bold;
+      margin-bottom: 17px;
+    }
+
+    .wishlist-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+    }
+
+    .btn-add {
+      background: #594538;
+      color: white;
+      border: none;
+      padding: 11px;
+      cursor: pointer;
+      font-size: 11px;
+      letter-spacing: 1px;
+      transition: 0.3s;
+    }
+
+    .btn-add:hover {
+      background: #B7A18F;
+    }
+
+    .btn-remove {
+      background: transparent;
+      color: #8A6E5A;
+      border: 1px solid #D8C8BA;
+      padding: 10px;
+      cursor: pointer;
+      font-size: 11px;
+      letter-spacing: 1px;
+      transition: 0.3s;
+    }
+
+    .btn-remove:hover {
+      background: #F8F5F1;
+    }
+
+    /* EMPTY WISHLIST */
+    .empty-wishlist {
+      display: none;
+      text-align: center;
+      padding: 65px 20px;
+      background: white;
+    }
+
+    .empty-wishlist h3 {
+      font-family: Georgia, serif;
+      color: #594538;
+      font-size: 25px;
+      margin-bottom: 12px;
+    }
+
+    .empty-wishlist p {
+      color: #82766D;
+      font-size: 13px;
+      margin-bottom: 25px;
+      line-height: 1.7;
+    }
+
+    .shop-button {
+      display: inline-block;
+      background: #594538;
+      color: white;
+      padding: 13px 25px;
+      font-size: 11px;
+      letter-spacing: 1px;
+      transition: 0.3s;
+    }
+
+    .shop-button:hover {
+      background: #B7A18F;
+      color: white;
+    }
+
+    /* FOOTER */
+    .site-footer {
+      background: #594538;
+      color: white;
+      padding: 45px 7% 25px;
+    }
+
+    .site-footer-container {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 40px;
+      max-width: 1150px;
+      margin: auto;
+    }
+
+    .site-footer-logo {
+      font-size: 25px;
+      letter-spacing: 3px;
+      margin-bottom: 12px;
+    }
+
+    .site-footer-about p {
+      color: #E8DCD0;
+      font-size: 13px;
+      max-width: 300px;
+      line-height: 1.8;
+    }
+
+    .site-footer-links h3 {
+      font-size: 14px;
+      margin-bottom: 15px;
+      letter-spacing: 1px;
+    }
+
+    .site-footer-links a {
+      display: block;
+      color: #E8DCD0;
+      font-size: 13px;
+      margin-bottom: 9px;
+    }
+
+    .site-footer-links a:hover {
+      color: white;
+    }
+
+    .site-copyright {
+      border-top: 1px solid #9A8170;
+      text-align: center;
+      margin-top: 35px;
+      padding-top: 20px;
+      color: #E8DCD0;
+      font-size: 11px;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .wishlist-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .site-footer-container {
+        grid-template-columns: 1fr;
+        gap: 25px;
+      }
+    }
+
+    @media (max-width: 650px) {
+      .navbar {
+        flex-direction: column;
+        gap: 17px;
+      }
+
+      .nav-links {
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 15px;
+      }
+
+      .wishlist-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+      }
+
+      .wishlist-card img {
+        height: 180px;
+      }
+
+      .page-banner {
+        height: 260px;
+      }
+
+      .page-banner h1 {
+        font-size: 32px;
+      }
+
+      .wishlist-section {
+        padding: 45px 5% 60px;
+      }
+    }
+
+    @media (max-width: 400px) {
+      .wishlist-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ANNOUNCEMENT -->
+  <div class="announcement">
+    ELEGANCE MADE PERSONAL — DISCOVER YOUR STYLE
+  </div>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <a href="index.html" class="logo">BILLAYA</a>
+
+    <div class="nav-links">
+      <a href="index.html">HOME</a>
+      <a href="shop.html">SHOP</a>
+      <a href="about.html">ABOUT US</a>
+      <a href="contact.html">CONTACT</a>
+      <a href="wishlist.html" class="active">WISHLIST</a>
+      <a href="cart.html">BAG (<span id="cartCount">0</span>)</a>
+    </div>
+  </nav>
+
+  <!-- PAGE BANNER -->
+  <section class="page-banner">
+    <h1>MY WISHLIST</h1>
+    <p>Your favorite pieces, all in one place.</p>
+  </section>
+
+  <!-- WISHLIST SECTION -->
+  <section class="wishlist-section">
+
+    <div class="wishlist-heading">
+      <h2>Saved Items</h2>
+      <p id="wishlistCount">0 items in your wishlist</p>
+    </div>
+
+    <!-- PRODUCT LIST -->
+    <div class="wishlist-grid" id="wishlistGrid">
+    </div>
+
+    <!-- EMPTY WISHLIST -->
+    <div class="empty-wishlist" id="emptyWishlist">
+      <h3>Your Wishlist is Empty</h3>
+
+      <p>
+        You haven't saved any favorite items yet.
+        Discover something beautiful for your collection.
+      </p>
+
+      <a href="shop.html" class="shop-button">
+        EXPLORE PRODUCTS
+      </a>
+    </div>
+
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+
+    <div class="site-footer-container">
+
+      <div class="site-footer-about">
+        <div class="site-footer-logo">BILLAYA</div>
+        <p>
+          Discover your personal elegance with our
+          beautiful collection of women's accessories.
+        </p>
+      </div>
+
+      <div class="site-footer-links">
+        <h3>QUICK LINKS</h3>
+        <a href="index.html">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="about.html">About Us</a>
+        <a href="contact.html">Contact</a>
+      </div>
+
+      <div class="site-footer-links">
+        <h3>MY ACCOUNT</h3>
+        <a href="wishlist.html">My Wishlist</a>
+        <a href="cart.html">Shopping Bag</a>
+        <a href="checkout.html">Checkout</a>
+      </div>
+
+    </div>
+
+    <div class="site-copyright">
+      © 2026 BILLAYA Official Store. All Rights Reserved.
+    </div>
+
+  </footer>
+
+  <!-- JAVASCRIPT -->
+  <script>
+
+    // GET WISHLIST DATA
+    function getWishlist() {
+      return JSON.parse(localStorage.getItem("billayaWishlist")) || [];
+    }
+
+    // SAVE WISHLIST DATA
+    function saveWishlist(wishlist) {
+      localStorage.setItem("billayaWishlist", JSON.stringify(wishlist));
+    }
+
+    // UPDATE CART COUNT
+    function updateCartCount() {
+      let cart = JSON.parse(localStorage.getItem("billayaCart")) || [];
+
+      let totalItems = cart.reduce(function (total, item) {
+        return total + (Number(item.quantity) || 0);
+      }, 0);
+
+      document.getElementById("cartCount").textContent = totalItems;
+    }
+
+    // DISPLAY WISHLIST
+    function displayWishlist() {
+      let wishlist = getWishlist();
+
+      let wishlistGrid = document.getElementById("wishlistGrid");
+      let emptyWishlist = document.getElementById("emptyWishlist");
+      let wishlistCount = document.getElementById("wishlistCount");
+
+      wishlistGrid.innerHTML = "";
+
+      wishlistCount.textContent = wishlist.length + " items in your wishlist";
+
+      if (wishlist.length === 0) {
+        emptyWishlist.style.display = "block";
+        return;
+      }
+
+      emptyWishlist.style.display = "none";
+
+      wishlist.forEach(function (product) {
+
+        let card = document.createElement("div");
+        card.className = "wishlist-card";
+
+        let image = document.createElement("img");
+        image.src = product.image || "";
+        image.alt = product.name || "BILLAYA Product";
+
+        image.onerror = function () {
+          this.src = "https://placehold.co/400x400/F8F5F1/594538?text=BILLAYA";
+        };
+
+        let details = document.createElement("div");
+        details.className = "wishlist-details";
+
+        let name = document.createElement("h3");
+        name.textContent = product.name || "Product";
+
+        let price = document.createElement("div");
+        price.className = "wishlist-price";
+        price.textContent = "Rp " + Number(product.price || 0).toLocaleString("id-ID");
+
+        let actions = document.createElement("div");
+        actions.className = "wishlist-actions";
+
+        let addButton = document.createElement("button");
+        addButton.className = "btn-add";
+        addButton.textContent = "ADD TO BAG";
+
+        addButton.addEventListener("click", function () {
+          addToCart(product);
+        });
+
+        let removeButton = document.createElement("button");
+        removeButton.className = "btn-remove";
+        removeButton.textContent = "REMOVE";
+
+        removeButton.addEventListener("click", function () {
+          removeFromWishlist(product.id);
+        });
+
+        actions.appendChild(addButton);
+        actions.appendChild(removeButton);
+
+        details.appendChild(name);
+        details.appendChild(price);
+        details.appendChild(actions);
+
+        card.appendChild(image);
+        card.appendChild(details);
+
+        wishlistGrid.appendChild(card);
+
+      });
+    }
+
+    // ADD PRODUCT TO CART
+    function addToCart(product) {
+      let cart = JSON.parse(localStorage.getItem("billayaCart")) || [];
+
+      let existingProduct = cart.find(function (item) {
+        return String(item.id) === String(product.id);
+      });
+
+      if (existingProduct) {
+        existingProduct.quantity = (Number(existingProduct.quantity) || 0) + 1;
+      } else {
+        cart.push({
+          id: product.id,
+          name: product.name,
+          price: product.price,
+          image: product.image,
+          quantity: 1
+        });
+      }
+
+      localStorage.setItem("billayaCart", JSON.stringify(cart));
+
+      updateCartCount();
+
+      alert("Product successfully added to your shopping bag!");
+    }
+
+    // REMOVE PRODUCT FROM WISHLIST
+    function removeFromWishlist(productId) {
+      let wishlist = getWishlist();
+
+      wishlist = wishlist.filter(function (product) {
+        return String(product.id) !== String(productId);
+      });
+
+      saveWishlist(wishlist);
+
+      displayWishlist();
+    }
+
+    // INITIALIZE PAGE
+    displayWishlist();
+    updateCartCount();
+
+  </script>
+
+</body>
+
+</html>

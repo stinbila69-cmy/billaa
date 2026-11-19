@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>BILLAYA | Shop Collection</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #F8F5F1;
+      color: #292725;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    .announcement {
+      background: #594538;
+      color: white;
+      text-align: center;
+      padding: 10px;
+      font-size: 11px;
+      letter-spacing: 2px;
+    }
+
+    .navbar {
+      background: #F8F5F1;
+      padding: 18px 7%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .logo {
+      font-family: Georgia, serif;
+      font-size: 27px;
+      font-weight: bold;
+      letter-spacing: 4px;
+      color: #594538;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 27px;
+    }
+
+    .nav-links a {
+      color: #594538;
+      font-size: 12px;
+      letter-spacing: 1px;
+      transition: 0.3s;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: #B7A18F;
+    }
+
+    .page-header {
+      background:
+        linear-gradient(rgba(41, 39, 37, 0.35), rgba(41, 39, 37, 0.35)),
+        url("https://i.pinimg.com/736x/0e/50/12/0e5012ecc91a32d716f4514160b89068.jpg");
+      background-size: cover;
+      background-position: center;
+      min-height: 340px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 65px 20px;
+    }
+
+    .page-header small {
+      color: #F8F5F1;
+      font-size: 11px;
+      letter-spacing: 3px;
+    }
+
+    .page-header h1 {
+      font-family: Georgia, serif;
+      font-size: 46px;
+      font-weight: normal;
+      color: white;
+      margin: 15px 0;
+    }
+
+    .page-header p {
+      font-size: 13px;
+      color: white;
+      line-height: 1.8;
+      max-width: 500px;
+    }
+
+    .shop-section {
+      padding: 65px 7%;
+    }
+
+    .section-heading {
+      text-align: center;
+      margin-bottom: 35px;
+    }
+
+    .section-heading small {
+      color: #B7A18F;
+      letter-spacing: 3px;
+      font-size: 11px;
+    }
+
+    .section-heading h2 {
+      font-family: Georgia, serif;
+      font-size: 32px;
+      font-weight: normal;
+      color: #594538;
+      margin-top: 12px;
+    }
+
+    .section-heading p {
+      color: #8B7B70;
+      font-size: 13px;
+      margin-top: 12px;
+    }
+
+    .filters {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 35px;
+    }
+
+    .filters input,
+    .filters select {
+      padding: 12px 15px;
+      border: 1px solid #D8C9BC;
+      background: white;
+      color: #594538;
+      font-size: 13px;
+      min-width: 190px;
+      outline: none;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 22px;
+    }
+
+    .product-card {
+      background: white;
+      transition: 0.3s;
+    }
+
+    .product-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.07);
+    }
+
+    .product-card img {
+      width: 100%;
+      height: 245px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .product-info {
+      padding: 16px;
+    }
+
+    .product-category {
+      font-size: 10px;
+      color: #A18D7D;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+    }
+
+    .product-info h3 {
+      font-family: Georgia, serif;
+      font-size: 16px;
+      font-weight: normal;
+      color: #594538;
+      margin-bottom: 9px;
+    }
+
+    .product-price {
+      color: #8B705D;
+      font-size: 14px;
+      font-weight: bold;
+      margin-bottom: 14px;
+    }
+
+    .product-actions {
+      display: flex;
+      gap: 7px;
+    }
+
+    .product-actions button {
+      padding: 10px 5px;
+      border: none;
+      cursor: pointer;
+      font-size: 10px;
+      letter-spacing: 1px;
+      transition: 0.3s;
+    }
+
+    .add-btn {
+      flex: 1;
+      background: #594538;
+      color: white;
+    }
+
+    .add-btn:hover {
+      background: #8B705D;
+    }
+
+    .wish-btn {
+      width: 40px;
+      background: #E8DCD0;
+      color: #594538;
+      font-size: 16px !important;
+    }
+
+    .wish-btn:hover {
+      background: #B7A18F;
+      color: white;
+    }
+
+    .no-product {
+      display: none;
+      text-align: center;
+      padding: 40px;
+      color: #8B705D;
+    }
+
+    .site-footer {
+      background: #594538;
+      color: white;
+      padding: 45px 7% 25px;
+      line-height: 1.7;
+      border-top: 1px solid #9A8170;
+    }
+
+    .site-footer-container {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 40px;
+      max-width: 1150px;
+      margin: auto;
+    }
+
+    .site-footer-logo {
+      font-size: 25px;
+      letter-spacing: 3px;
+      margin-bottom: 12px;
+    }
+
+    .site-footer-about p {
+      color: #E8DCD0;
+      font-size: 13px;
+      max-width: 300px;
+    }
+
+    .site-footer-links h3 {
+      font-size: 14px;
+      margin-bottom: 15px;
+      letter-spacing: 1px;
+    }
+
+    .site-footer-links a {
+      display: block;
+      color: #E8DCD0;
+      font-size: 13px;
+      margin-bottom: 9px;
+    }
+
+    .site-footer-links a:hover {
+      color: white;
+    }
+
+    .site-copyright {
+      border-top: 1px solid #9A8170;
+      text-align: center;
+      margin-top: 35px;
+      padding-top: 20px;
+      color: #E8DCD0;
+      font-size: 11px;
+    }
+
+    @media (max-width: 900px) {
+      .product-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .site-footer-container {
+        grid-template-columns: 1fr;
+        gap: 25px;
+      }
+    }
+
+    @media (max-width: 650px) {
+      .navbar {
+        flex-direction: column;
+        gap: 17px;
+      }
+
+      .nav-links {
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 15px;
+      }
+
+      .page-header {
+        min-height: 280px;
+      }
+
+      .page-header h1 {
+        font-size: 34px;
+      }
+
+      .page-header p {
+        font-size: 12px;
+      }
+
+      .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+      }
+
+      .product-card img {
+        height: 180px;
+      }
+
+      .product-info {
+        padding: 11px;
+      }
+
+      .product-info h3 {
+        font-size: 14px;
+      }
+
+      .shop-section {
+        padding: 45px 5%;
+      }
+
+      .filters input,
+      .filters select {
+        width: 100%;
+      }
+    }
+
+    @media (max-width: 380px) {
+      .product-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="announcement">
+    ELEGANCE MADE PERSONAL — DISCOVER YOUR STYLE
+  </div>
+
+  <nav class="navbar">
+    <a href="index.html" class="logo">BILLAYA</a>
+    <div class="nav-links">
+      <a href="index.html">HOME</a>
+      <a href="shop.html" class="active">SHOP</a>
+      <a href="about.html">ABOUT US</a>
+      <a href="contact.html">CONTACT</a>
+      <a href="wishlist.html">WISHLIST</a>
+      <a href="cart.html">BAG (<span id="cartCount">0</span>)</a>
+    </div>
+  </nav>
+
+  <header class="page-header">
+    <small>DISCOVER YOUR STYLE</small>
+    <h1>Our Collection</h1>
+    <p>
+      Explore our beautiful collection of women's accessories.
+      Find the perfect detail to complete your look.
+    </p>
+  </header>
+
+  <main class="shop-section">
+
+    <div class="section-heading">
+      <small>BEAUTY IN EVERY DETAIL</small>
+      <h2>Shop All Products</h2>
+      <p>Find your favorite accessories from our collection.</p>
+    </div>
+
+    <div class="filters">
+      <input type="search" id="searchInput" placeholder="Search products...">
+
+      <select id="categoryFilter">
+        <option value="all">All Categories</option>
+        <option value="Earrings">Earrings</option>
+        <option value="Necklaces">Necklaces</option>
+        <option value="Bracelets">Bracelets</option>
+        <option value="Rings">Rings</option>
+        <option value="Hair Accessories">Hair Accessories</option>
+        <option value="Anklets">Anklets</option>
+        <option value="Hair Clips & Claws">Hair Clips & Claws</option>
+        <option value="Brooches">Brooches</option>
+        <option value="Jewelry Sets">Jewelry Sets</option>
+        <option value="Fashion Accessories">Fashion Accessories</option>
+      </select>
+
+      <select id="sortFilter">
+        <option value="default">Sort By: Default</option>
+        <option value="low">Price: Low to High</option>
+        <option value="high">Price: High to Low</option>
+        <option value="name">Name: A to Z</option>
+      </select>
+    </div>
+
+    <div class="product-grid" id="productGrid"></div>
+
+    <div class="no-product" id="noProduct">
+      No products found. Please try another search.
+    </div>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-footer-container">
+
+      <div class="site-footer-about">
+        <div class="site-footer-logo">BILLAYA</div>
+        <p>
+          Discover your personal elegance with our
+          beautiful collection of women's accessories.
+        </p>
+      </div>
+
+      <div class="site-footer-links">
+        <h3>QUICK LINKS</h3>
+        <a href="index.html">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="about.html">About Us</a>
+        <a href="contact.html">Contact</a>
+      </div>
+
+      <div class="site-footer-links">
+        <h3>MY ACCOUNT</h3>
+        <a href="wishlist.html">My Wishlist</a>
+        <a href="cart.html">Shopping Bag</a>
+        <a href="checkout.html">Checkout</a>
+      </div>
+
+    </div>
+
+    <div class="site-copyright">
+      © 2026 BILLAYA Official Store. All Rights Reserved.
+    </div>
+  </footer>
+
+  <script>
+
+    const products = [
+
+      // EARRINGS
+      {
+        id: 1,
+        name: "Golden Hoop Earrings",
+        category: "Earrings",
+        price: 85000,
+        image: "https://i.pinimg.com/736x/d6/19/74/d619740b5a32a0babfe1a934b13d2cc4.jpg"
+      },
+      {
+        id: 2,
+        name: "Pearl Drop Earrings",
+        category: "Earrings",
+        price: 90000,
+        image: "https://i.pinimg.com/736x/7c/77/bc/7c77bc9cf137585d316d4d5acb755eb0.jpg"
+      },
+      {
+        id: 3,
+        name: "Minimalist Stud Earrings",
+        category: "Earrings",
+        price: 75000,
+        image: "https://i.pinimg.com/1200x/f1/1e/ea/f11eeab57f888da9b69a14e307d55e28.jpg"
+      },
+      {
+        id: 4,
+        name: "Floral Earrings",
+        category: "Earrings",
+        price: 110000,
+        image: "https://i.pinimg.com/736x/e4/b5/b5/e4b5b5710fa2830b6a99351efe5fa82f.jpg"
+      },
+
+      // NECKLACES
+      {
+        id: 5,
+        name: "Golden Pendant Necklace",
+        category: "Necklaces",
+        price: 120000,
+        image: "https://i.pinimg.com/736x/37/89/e0/3789e06aebcb901b1c6917390c2d133f.jpg"
+      },
+      {
+        id: 6,
+        name: "Pearl Necklace",
+        category: "Necklaces",
+        price: 145000,
+        image: "https://i.pinimg.com/1200x/e2/75/01/e2750100e583685cb91fe46cfefdc24f.jpg"
+      },
+      {
+        id: 7,
+        name: "Heart Necklace",
+        category: "Necklaces",
+        price: 100000,
+        image: "https://i.pinimg.com/1200x/1b/38/34/1b3834ec92ca8ce485364a75ebcf29d3.jpg"
+      },
+      {
+        id: 8,
+        name: "Layered Necklace",
+        category: "Necklaces",
+        price: 135000,
+        image: "https://i.pinimg.com/1200x/4d/96/39/4d9639f18a18b165e7b68b6b6fda6a57.jpg"
+      },
+
+      // BRACELETS
+      {
+        id: 9,
+        name: "Classic Gold Bracelet",
+        category: "Bracelets",
+        price: 95000,
+        image: "https://i.pinimg.com/736x/eb/fe/0f/ebfe0fca41870abcb4c804c444766d6c.jpg"
+      },
+      {
+        id: 10,
+        name: "Pearl Bracelet",
+        category: "Bracelets",
+        price: 105000,
+        image: "https://i.pinimg.com/736x/8a/2f/1b/8a2f1ba0adc947262b7fe27b0d6c1621.jpg"
+      },
+      {
+        id: 11,
+        name: "Charm Bracelet",
+        category: "Bracelets",
+        price: 110000,
+        image: "https://i.pinimg.com/736x/8b/4e/e5/8b4ee54e3e3547478d19b29659dec0cb.jpg"
+      },
+      {
+        id: 12,
+        name: "Crystal Bracelet",
+        category: "Bracelets",
+        price: 125000,
+        image: "https://i.pinimg.com/1200x/53/fa/2f/53fa2ffd48049c3932d437b29b5f557f.jpg"
+      },
+
+      // RINGS
+      {
+        id: 13,
+        name: "Luxury Diamond Ring",
+        category: "Rings",
+        price: 150000,
+        image: "https://i.pinimg.com/1200x/18/29/e7/1829e736640d276188d563a1f101b837.jpg"
+      },
+      {
+        id: 14,
+        name: "Minimalist Gold Ring",
+        category: "Rings",
+        price: 85000,
+        image: "https://i.pinimg.com/736x/38/c0/d2/38c0d2c457f5c8441409c864d6d27926.jpg"
+      },
+      {
+        id: 15,
+        name: "Pearl Ring",
+        category: "Rings",
+        price: 95000,
+        image: "https://i.pinimg.com/736x/39/73/43/3973439c9ca280369da21934b4a211fc.jpg"
+      },
+      {
+        id: 16,
+        name: "Adjustable Ring",
+        category: "Rings",
+        price: 75000,
+        image: "https://i.pinimg.com/736x/69/88/ac/6988ac5001ec3cdb0bbd83f61d69a259.jpg"
+      },
+
+      // HAIR ACCESSORIES
+      {
+        id: 17,
+        name: "Satin Hair Bow",
+        category: "Hair Accessories",
+        price: 35000,
+        image: "https://i.pinimg.com/736x/65/8f/0f/658f0fc41e742f3a017dc34ecab0ffaa.jpg"
+      },
+      {
+        id: 18,
+        name: "Pearl Hair Clip",
+        category: "Hair Accessories",
+        price: 55000,
+        image: "https://i.pinimg.com/1200x/ac/d6/d3/acd6d359c52f3fc5a1d0dd4929d689fe.jpg"
+      },
+      {
+        id: 19,
+        name: "Elegant Hair Claw",
+        category: "Hair Accessories",
+        price: 65000,
+        image: "https://i.pinimg.com/736x/02/05/3a/02053aaf2b40caeb360b18050d9defb4.jpg"
+      },
+      {
+        id: 20,
+        name: "Floral Hair Clip",
+        category: "Hair Accessories",
+        price: 45000,
+        image: "https://img.staticdj.com/59cd10f1ba2336eba8caaaf22c623b09_750x.jpeg"
+      },
+
+      // ANKLETS
+      {
+        id: 21,
+        name: "Golden Chain Anklet",
+        category: "Anklets",
+        price: 65000,
+        image: "https://i.pinimg.com/1200x/51/b7/4d/51b74d235dc1cdc3d84c415b3f806b6a.jpg"
+      },
+      {
+        id: 22,
+        name: "Pearl Beaded Anklet",
+        category: "Anklets",
+        price: 75000,
+        image: "https://i.pinimg.com/736x/89/e1/79/89e179a8f35fa16c5201a306ed6cf695.jpg"
+      },
+      {
+        id: 23,
+        name: "Heart Charm Anklet",
+        category: "Anklets",
+        price: 70000,
+        image: "https://i.pinimg.com/736x/32/c5/1d/32c51dfd6921ec6f150d28a19999ee42.jpg"
+      },
+
+      // HAIR CLIPS & CLAWS
+      {
+        id: 24,
+        name: "Classic Beige Claw Clip",
+        category: "Hair Clips & Claws",
+        price: 45000,
+        image: "https://i.pinimg.com/736x/40/91/14/4091145f5594977db7d66b76ef59aaf2.jpg"
+      },
+      {
+        id: 25,
+        name: "Brown Marble Hair Claw",
+        category: "Hair Clips & Claws",
+        price: 55000,
+        image: "https://i.pinimg.com/1200x/37/e6/77/37e67706e18fd9bda95355ea7e5174b2.jpg"
+      },
+      {
+        id: 26,
+        name: "Pearl Hair Claw Clip",
+        category: "Hair Clips & Claws",
+        price: 60000,
+        image: "https://i.pinimg.com/736x/53/5a/d8/535ad815f0bed84b39a5ffb7870d626b.jpg"
+      },
+
+      // BROOCHES
+      {
+        id: 27,
+        name: "Golden Floral Brooch",
+        category: "Brooches",
+        price: 55000,
+        image: "https://i.pinimg.com/736x/d9/a6/d9/d9a6d999e95694bbc4becfb210baf65d.jpg"
+      },
+      {
+        id: 28,
+        name: "Pearl Elegant Brooch",
+        category: "Brooches",
+        price: 65000,
+        image: "https://i.pinimg.com/736x/7f/78/53/7f78539f0f9182b3e5f0cce6f71537c4.jpg"
+      },
+      {
+        id: 29,
+        name: "Vintage Butterfly Brooch",
+        category: "Brooches",
+        price: 60000,
+        image: "https://i.pinimg.com/1200x/a3/12/fe/a312fe863f32dfc562be6a23043cdb94.jpg"
+      },
+
+      // JEWELRY SETS
+      {
+        id: 30,
+        name: "Classic Pearl Jewelry Set",
+        category: "Jewelry Sets",
+        price: 185000,
+        image: "https://i.pinimg.com/736x/18/bb/9e/18bb9e7639e857bb52636082593e8220.jpg"
+      },
+      {
+        id: 31,
+        name: "Golden Elegance Set",
+        category: "Jewelry Sets",
+        price: 195000,
+        image: "https://i.pinimg.com/736x/d9/0b/ed/d90bedde0c65fcd2f2f71c5a9fa0a7d2.jpg"
+      },
+      {
+        id: 32,
+        name: "Minimalist Heart Set",
+        category: "Jewelry Sets",
+        price: 175000,
+        image: "https://i.pinimg.com/736x/36/98/2e/36982e8257ec314d7a3b7cbafc8906a9.jpg"
+      },
+
+      // FASHION ACCESSORIES
+      {
+        id: 33,
+        name: "Silk Beige Scarf",
+        category: "Fashion Accessories",
+        price: 85000,
+        image: "https://i.pinimg.com/736x/1b/af/bf/1bafbf573c574d92ad4ee259e2daee89.jpg"
+      },
+      {
+        id: 34,
+        name: "Classic Brown Silk Scarf",
+        category: "Fashion Accessories",
+        price: 95000,
+        image: "https://i.pinimg.com/1200x/0c/e7/32/0ce732cbc2d0744406fe02b60b08b145.jpg"
+      },
+      {
+        id: 35,
+        name: "Elegant Satin Scarf",
+        category: "Fashion Accessories",
+        price: 90000,
+        image: "https://i.pinimg.com/1200x/c1/bd/78/c1bd78f9bb42a62970aa917fc3368ad6.jpg"
+      }
+
+    ];
+
+    function formatRupiah(number) {
+      return "Rp " + number.toLocaleString("id-ID");
+    }
+
+    function getCart() {
+      return JSON.parse(localStorage.getItem("billayaCart") || "[]");
+    }
+
+    function getWishlist() {
+      return JSON.parse(localStorage.getItem("billayaWishlist") || "[]");
+    }
+
+    function updateCartCount() {
+      const cart = getCart();
+
+      const total = cart.reduce(function (sum, item) {
+        return sum + item.quantity;
+      }, 0);
+
+      document.getElementById("cartCount").textContent = total;
+    }
+
+    function addToCart(id) {
+      const product = products.find(function (item) {
+        return item.id === id;
+      });
+
+      let cart = getCart();
+
+      const existing = cart.find(function (item) {
+        return item.id === id;
+      });
+
+      if (existing) {
+        existing.quantity++;
+      } else {
+        cart.push({ ...product, quantity: 1 });
+      }
+
+      localStorage.setItem("billayaCart", JSON.stringify(cart));
+
+      updateCartCount();
+
+      alert(product.name + " has been added to your bag!");
+    }
+
+    function addToWishlist(id) {
+      const product = products.find(function (item) {
+        return item.id === id;
+      });
+
+      let wishlist = getWishlist();
+
+      const existing = wishlist.find(function (item) {
+        return item.id === id;
+      });
+
+      if (existing) {
+        alert("This product is already in your wishlist.");
+        return;
+      }
+
+      wishlist.push(product);
+
+      localStorage.setItem("billayaWishlist", JSON.stringify(wishlist));
+
+      alert(product.name + " has been added to your wishlist!");
+    }
+
+    function displayProducts() {
+      const search = document.getElementById("searchInput").value.toLowerCase();
+      const category = document.getElementById("categoryFilter").value;
+      const sort = document.getElementById("sortFilter").value;
+
+      let filteredProducts = products.filter(function (product) {
+        const matchName = product.name.toLowerCase().includes(search);
+        const matchCategory = category === "all" || product.category === category;
+
+        return matchName && matchCategory;
+      });
+
+      if (sort === "low") {
+        filteredProducts.sort(function (a, b) {
+          return a.price - b.price;
+        });
+      } else if (sort === "high") {
+        filteredProducts.sort(function (a, b) {
+          return b.price - a.price;
+        });
+      } else if (sort === "name") {
+        filteredProducts.sort(function (a, b) {
+          return a.name.localeCompare(b.name);
+        });
+      }
+
+      const productGrid = document.getElementById("productGrid");
+
+      productGrid.innerHTML = filteredProducts.map(function (product) {
+        return `
+          <div class="product-card">
+            <img
+              src="${product.image}"
+              alt="${product.name}"
+              onerror="this.src='https://placehold.co/600x600/F8F5F1/594538?text=BILLAYA'"
+            >
+
+            <div class="product-info">
+              <div class="product-category">${product.category}</div>
+
+              <h3>${product.name}</h3>
+
+              <div class="product-price">
+                ${formatRupiah(product.price)}
+              </div>
+
+              <div class="product-actions">
+                <button class="add-btn" onclick="addToCart(${product.id})">
+                  ADD TO BAG
+                </button>
+
+                <button class="wish-btn" onclick="addToWishlist(${product.id})">
+                  ♡
+                </button>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join("");
+
+      document.getElementById("noProduct").style.display =
+        filteredProducts.length === 0 ? "block" : "none";
+    }
+
+    document.getElementById("searchInput").addEventListener("input", displayProducts);
+
+    document.getElementById("categoryFilter").addEventListener("change", displayProducts);
+
+    document.getElementById("sortFilter").addEventListener("change", displayProducts);
+
+    displayProducts();
+
+    updateCartCount();
+
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>About Us | BILLAYA Official Store</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #F8F5F1;
+      color: #292725;
+      line-height: 1.7;
+    }
+
+    /* ANNOUNCEMENT */
+    .announcement {
+      background: #594538;
+      color: white;
+      text-align: center;
+      padding: 9px;
+      font-size: 11px;
+      letter-spacing: 2px;
+    }
+
+    /* NAVBAR */
+    .navbar {
+      background: #F8F5F1;
+      padding: 20px 7%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #E8DCD0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .logo {
+      font-size: 25px;
+      font-weight: bold;
+      letter-spacing: 3px;
+      color: #594538;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 27px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #292725;
+      font-size: 12px;
+      letter-spacing: 1px;
+      transition: 0.3s;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: #B7A18F;
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 390px;
+      background:
+        linear-gradient(rgba(41, 39, 37, 0.38), rgba(41, 39, 37, 0.38)),
+        url("https://images.unsplash.com/photo-1611652022419-a9419f74343d?w=1600");
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+      padding: 40px 20px;
+    }
+
+    .hero-content p {
+      font-size: 12px;
+      letter-spacing: 4px;
+      margin-bottom: 15px;
+    }
+
+    .hero-content h1 {
+      font-family: Georgia, serif;
+      font-size: 55px;
+      font-weight: normal;
+      margin-bottom: 15px;
+    }
+
+    .hero-content span {
+      font-size: 14px;
+      letter-spacing: 1px;
+    }
+
+    /* SECTION GENERAL */
+    .section-label {
+      color: #B7A18F;
+      font-size: 11px;
+      letter-spacing: 3px;
+      margin-bottom: 12px;
+      font-weight: bold;
+    }
+
+    .section-title {
+      font-family: Georgia, serif;
+      color: #594538;
+      font-size: 35px;
+      font-weight: normal;
+      line-height: 1.3;
+      margin-bottom: 18px;
+    }
+
+    .section-description {
+      color: #71685F;
+      font-size: 14px;
+    }
+
+    /* INTRODUCTION */
+    .introduction {
+      max-width: 1150px;
+      margin: auto;
+      padding: 90px 30px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 65px;
+      align-items: center;
+    }
+
+    .intro-image img {
+      width: 100%;
+      height: 450px;
+      object-fit: cover;
+    }
+
+    .intro-text {
+      padding: 15px 0;
+    }
+
+    .intro-text p {
+      margin-bottom: 17px;
+      color: #71685F;
+      font-size: 14px;
+    }
+
+    .intro-signature {
+      color: #594538;
+      font-family: Georgia, serif;
+      font-style: italic;
+      font-size: 19px;
+      margin-top: 25px;
+    }
+
+    /* BRAND STORY */
+    .story-section {
+      background: #E8DCD0;
+      padding: 85px 7%;
+    }
+
+    .story-container {
+      max-width: 1150px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .story-image img {
+      width: 100%;
+      height: 420px;
+      object-fit: cover;
+    }
+
+    .story-text p {
+      color: #71685F;
+      font-size: 14px;
+      margin-bottom: 18px;
+    }
+
+    /* COLLECTIONS */
+    .collections-section {
+      padding: 85px 7%;
+      text-align: center;
+    }
+
+    .collections-container {
+      max-width: 1200px;
+      margin: 40px auto 0;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 18px;
+    }
+
+    .collection-card {
+      text-align: center;
+    }
+
+    .collection-card img {
+      width: 100%;
+      height: 230px;
+      object-fit: cover;
+      transition: 0.4s;
+    }
+
+    .collection-card img:hover {
+      transform: scale(1.03);
+    }
+
+    .collection-card h3 {
+      color: #594538;
+      font-family: Georgia, serif;
+      font-size: 18px;
+      font-weight: normal;
+      margin-top: 13px;
+    }
+
+    /* WHY CHOOSE US */
+    .why-section {
+      background: #E8DCD0;
+      padding: 85px 7%;
+      text-align: center;
+    }
+
+    .why-container {
+      max-width: 1100px;
+      margin: 40px auto 0;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 25px;
+    }
+
+    .why-card {
+      background: #F8F5F1;
+      padding: 38px 25px;
+      border: 1px solid #E2D5C9;
+    }
+
+    .why-icon {
+      font-size: 30px;
+      margin-bottom: 15px;
+    }
+
+    .why-card h3 {
+      font-family: Georgia, serif;
+      color: #594538;
+      font-size: 21px;
+      font-weight: normal;
+      margin-bottom: 12px;
+    }
+
+    .why-card p {
+      color: #71685F;
+      font-size: 13px;
+    }
+
+    /* VISION MISSION */
+    .vision-section {
+      max-width: 1100px;
+      margin: auto;
+      padding: 90px 25px;
+      text-align: center;
+    }
+
+    .vision-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      margin-top: 40px;
+    }
+
+    .vision-card {
+      padding: 45px 35px;
+      border: 1px solid #D9C8B9;
+      background: #FCFAF7;
+      text-align: left;
+    }
+
+    .vision-card h3 {
+      color: #594538;
+      font-family: Georgia, serif;
+      font-size: 26px;
+      font-weight: normal;
+      margin-bottom: 15px;
+    }
+
+    .vision-card p {
+      color: #71685F;
+      font-size: 14px;
+    }
+
+    /* BRAND STATEMENT */
+    .statement {
+      background: #594538;
+      color: white;
+      text-align: center;
+      padding: 80px 25px;
+    }
+
+    .statement p {
+      color: #D9C8B9;
+      font-size: 11px;
+      letter-spacing: 4px;
+      margin-bottom: 15px;
+    }
+
+    .statement h2 {
+      font-family: Georgia, serif;
+      font-size: 39px;
+      font-weight: normal;
+      margin-bottom: 15px;
+    }
+
+    .statement span {
+      font-size: 13px;
+      color: #E8DCD0;
+    }
+
+    /* BUTTON */
+    .shop-button {
+      display: inline-block;
+      background: #B7A18F;
+      color: white;
+      padding: 13px 30px;
+      text-decoration: none;
+      font-size: 12px;
+      letter-spacing: 1px;
+      margin-top: 25px;
+      transition: 0.3s;
+    }
+
+    .shop-button:hover {
+      background: #E8DCD0;
+      color: #594538;
+    }
+
+
+    /* FOOTER */
+    .site-footer {
+      background: #594538;
+      color: white;
+      padding: 45px 7% 25px;
+      line-height: 1.7;
+      border-top: 1px solid #9A8170;
+    }
+
+    .site-footer-container {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 40px;
+      max-width: 1150px;
+      margin: auto;
+    }
+
+    .site-footer-logo {
+      font-size: 25px;
+      letter-spacing: 3px;
+      margin-bottom: 12px;
+    }
+
+    .site-footer-about p {
+      color: #E8DCD0;
+      font-size: 13px;
+      max-width: 300px;
+    }
+
+    .site-footer-links h3 {
+      font-size: 14px;
+      margin-bottom: 15px;
+      letter-spacing: 1px;
+    }
+
+    .site-footer-links a {
+      display: block;
+      text-decoration: none;
+      color: #E8DCD0;
+      font-size: 13px;
+      margin-bottom: 9px;
+    }
+
+    .site-footer-links a:hover {
+      color: white;
+    }
+
+    .site-copyright {
+      border-top: 1px solid #9A8170;
+      text-align: center;
+      margin-top: 35px;
+      padding-top: 20px;
+      color: #E8DCD0;
+      font-size: 11px;
+    }
+
+    @media (max-width: 768px) {
+      .site-footer-container {
+        grid-template-columns: 1fr;
+        gap: 25px;
+      }
+    }
+
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .collections-container {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .navbar {
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      .nav-links {
+        gap: 14px;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .nav-links a {
+        font-size: 10px;
+      }
+
+      .hero-content h1 {
+        font-size: 38px;
+      }
+
+      .introduction,
+      .story-container {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        padding: 55px 20px;
+      }
+
+      .intro-image img,
+      .story-image img {
+        height: 320px;
+      }
+
+      .section-title {
+        font-size: 29px;
+      }
+
+      .collections-container {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .collection-card img {
+        height: 190px;
+      }
+
+      .why-container {
+        grid-template-columns: 1fr;
+      }
+
+      .vision-container {
+        grid-template-columns: 1fr;
+      }
+
+      .statement h2 {
+        font-size: 30px;
+      }
+
+      .footer-container {
+        grid-template-columns: 1fr;
+        gap: 25px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ANNOUNCEMENT -->
+  <div class="announcement">
+    ELEGANCE MADE PERSONAL — DISCOVER YOUR STYLE
+  </div>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <a href="index.html" class="logo">BILLAYA</a>
+
+    <div class="nav-links">
+      <a href="index.html">HOME</a>
+      <a href="shop.html">SHOP</a>
+      <a href="about.html" class="active">ABOUT US</a>
+      <a href="contact.html">CONTACT</a>
+      <a href="wishlist.html">WISHLIST</a>
+      <a href="cart.html">BAG</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-content">
+      <p>GET TO KNOW US</p>
+      <h1>About BILLAYA</h1>
+      <span>Elegance Made Personal.</span>
+    </div>
+  </section>
+
+  <!-- INTRODUCTION -->
+  <section class="introduction">
+    <div class="intro-image">
+      <img src="https://images.unsplash.com/photo-1611652022419-a9419f74343d?w=900" alt="BILLAYA jewelry collection">
+    </div>
+
+    <div class="intro-text">
+      <div class="section-label">WELCOME TO BILLAYA</div>
+
+      <h2 class="section-title">
+        A Little Detail Can Make a Big Difference.
+      </h2>
+
+      <p>
+        BILLAYA adalah toko aksesoris wanita yang menghadirkan
+        berbagai pilihan aksesoris dengan desain elegan,
+        minimalis, dan timeless.
+      </p>
+
+      <p>
+        Kami menyediakan berbagai koleksi mulai dari anting,
+        kalung, gelang, cincin, hingga aksesoris rambut yang
+        dapat melengkapi penampilan dalam berbagai kesempatan.
+      </p>
+
+      <p>
+        Bagi kami, aksesoris bukan hanya pelengkap penampilan,
+        tetapi juga cara sederhana untuk menunjukkan gaya
+        dan kepribadian seseorang.
+      </p>
+
+      <div class="intro-signature">
+        Elegance Made Personal.
+      </div>
+    </div>
+  </section>
+
+  <!-- OUR STORY -->
+  <section class="story-section">
+    <div class="story-container">
+
+      <div class="story-text">
+        <div class="section-label">OUR STORY</div>
+
+        <h2 class="section-title">
+          The Story Behind BILLAYA
+        </h2>
+
+        <p>
+          BILLAYA hadir dari ketertarikan terhadap dunia fashion
+          dan aksesoris wanita. Kami melihat bahwa detail kecil
+          dapat memberikan sentuhan berbeda pada sebuah penampilan.
+        </p>
+
+        <p>
+          Dari pemikiran tersebut, BILLAYA dibangun sebagai
+          toko aksesoris yang menawarkan beragam pilihan produk
+          dengan gaya sederhana, cantik, dan mudah dipadukan.
+        </p>
+
+        <p>
+          Kami ingin setiap koleksi BILLAYA dapat menjadi bagian
+          dari momen sehari-hari maupun acara spesial,
+          sehingga setiap wanita dapat merasa lebih percaya
+          diri dengan gayanya sendiri.
+        </p>
+      </div>
+
+      <div class="story-image">
+        <img src="https://images.unsplash.com/photo-1617038220319-276d3cfab638?w=900" alt="Elegant jewelry">
+      </div>
+
+    </div>
+  </section>
+
+  <!-- OUR COLLECTIONS -->
+  <section class="collections-section">
+    <div class="section-label">EXPLORE OUR PRODUCTS</div>
+
+    <h2 class="section-title">Our Collections</h2>
+
+    <p class="section-description">
+      Temukan berbagai pilihan aksesoris yang melengkapi
+      gaya dan penampilanmu.
+    </p>
+
+    <div class="collections-container">
+
+      <div class="collection-card">
+        <img src="https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=500" alt="Earrings">
+        <h3>Earrings</h3>
+      </div>
+
+      <div class="collection-card">
+        <img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=500" alt="Necklaces">
+        <h3>Necklaces</h3>
+      </div>
+
+      <div class="collection-card">
+        <img src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=500" alt="Bracelets">
+        <h3>Bracelets</h3>
+      </div>
+
+      <div class="collection-card">
+        <img src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=500" alt="Rings">
+        <h3>Rings</h3>
+      </div>
+
+      <div class="collection-card">
+        <img src="https://images.unsplash.com/photo-1523263685509-57c1d050d19b?w=500" alt="Hair Accessories">
+        <h3>Hair Accessories</h3>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- WHY CHOOSE BILLAYA -->
+  <section class="why-section">
+    <div class="section-label">WHY BILLAYA?</div>
+
+    <h2 class="section-title">Why Choose BILLAYA</h2>
+
+    <p class="section-description">
+      Kami menghadirkan pengalaman berbelanja aksesoris
+      yang sederhana dan menyenangkan.
+    </p>
+
+    <div class="why-container">
+
+      <div class="why-card">
+        <div class="why-icon">✧</div>
+        <h3>Elegant Designs</h3>
+        <p>
+          Pilihan desain yang elegan dan minimalis
+          untuk berbagai gaya penampilan.
+        </p>
+      </div>
+
+      <div class="why-card">
+        <div class="why-icon">♡</div>
+        <h3>Various Collections</h3>
+        <p>
+          Beragam kategori aksesoris yang dapat
+          disesuaikan dengan kebutuhan dan selera.
+        </p>
+      </div>
+
+      <div class="why-card">
+        <div class="why-icon">✿</div>
+        <h3>Personal Style</h3>
+        <p>
+          Membantu setiap wanita mengekspresikan
+          kepribadian melalui pilihan aksesoris.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- VISION AND MISSION -->
+  <section class="vision-section">
+    <div class="section-label">OUR PURPOSE</div>
+
+    <h2 class="section-title">Vision & Mission</h2>
+
+    <p class="section-description">
+      Tujuan dan komitmen yang menjadi bagian dari perjalanan BILLAYA.
+    </p>
+
+    <div class="vision-container">
+
+      <div class="vision-card">
+        <h3>Our Vision</h3>
+        <p>
+          Menjadi toko aksesoris wanita yang dikenal
+          melalui koleksi yang elegan, berkualitas,
+          dan mampu memberikan inspirasi gaya
+          bagi setiap pelanggan.
+        </p>
+      </div>
+
+      <div class="vision-card">
+        <h3>Our Mission</h3>
+        <p>
+          Menyediakan berbagai pilihan aksesoris wanita,
+          menghadirkan desain yang menarik dan mudah dipadukan,
+          serta memberikan pengalaman berbelanja yang
+          nyaman dan menyenangkan.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- BRAND STATEMENT -->
+  <section class="statement">
+    <p>OUR BRAND PHILOSOPHY</p>
+
+    <h2>Elegance Made Personal.</h2>
+
+    <span>Because every little detail tells your story.</span>
+
+    <br>
+
+    <a href="shop.html" class="shop-button">
+      EXPLORE COLLECTION
+    </a>
+  </section>
+
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+
+    <div class="site-footer-container">
+
+      <div class="site-footer-about">
+        <div class="site-footer-logo">BILLAYA</div>
+
+        <p>
+          Discover your personal elegance with our
+          beautiful collection of women's accessories.
+        </p>
+      </div>
+
+      <div class="site-footer-links">
+        <h3>QUICK LINKS</h3>
+
+        <a href="index.html">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="about.html">About Us</a>
+        <a href="contact.html">Contact</a>
+      </div>
+
+      <div class="site-footer-links">
+        <h3>MY ACCOUNT</h3>
+
+        <a href="wishlist.html">My Wishlist</a>
+        <a href="cart.html">Shopping Bag</a>
+        <a href="checkout.html">Checkout</a>
+      </div>
+
+    </div>
+
+    <div class="site-copyright">
+      © 2026 BILLAYA Official Store. All Rights Reserved.
+    </div>
+
+  </footer>
+
+
+</body>
+
+</html>

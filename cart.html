@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>BILLAYA | Shopping Bag</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: #F8F5F1;
+      color: #292725;
+      font-family: Arial, sans-serif;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    /* ANNOUNCEMENT */
+    .announcement {
+      background: #594538;
+      color: white;
+      text-align: center;
+      padding: 10px;
+      font-size: 11px;
+      letter-spacing: 2px;
+    }
+
+    /* NAVBAR */
+    .navbar {
+      background: #F8F5F1;
+      padding: 18px 7%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .logo {
+      font-family: Georgia, serif;
+      font-size: 27px;
+      font-weight: bold;
+      letter-spacing: 4px;
+      color: #594538;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 27px;
+    }
+
+    .nav-links a {
+      color: #594538;
+      font-size: 12px;
+      letter-spacing: 1px;
+      transition: 0.3s;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: #B7A18F;
+    }
+
+    /* PAGE BANNER */
+    .page-banner {
+      height: 340px;
+      background:
+        linear-gradient(rgba(41, 39, 37, 0.30), rgba(41, 39, 37, 0.30)),
+        url("https://i.pinimg.com/736x/84/f9/e1/84f9e15f710063799516b2f41d59cc9e.jpg");
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .page-banner h1 {
+      font-family: Georgia, serif;
+      font-size: 43px;
+      color: white;
+      letter-spacing: 4px;
+      margin-bottom: 15px;
+    }
+
+    .page-banner p {
+      color: white;
+      font-size: 14px;
+      letter-spacing: 1px;
+    }
+
+    /* CART SECTION */
+    .cart-section {
+      max-width: 1150px;
+      margin: auto;
+      padding: 60px 7% 80px;
+    }
+
+    .cart-heading {
+      margin-bottom: 30px;
+    }
+
+    .cart-heading h2 {
+      font-family: Georgia, serif;
+      color: #594538;
+      font-size: 28px;
+      margin-bottom: 8px;
+    }
+
+    .cart-heading p {
+      color: #82766D;
+      font-size: 13px;
+    }
+
+    .cart-container {
+      display: grid;
+      grid-template-columns: 1.7fr 1fr;
+      gap: 30px;
+      align-items: start;
+    }
+
+    /* CART ITEMS */
+    .cart-items {
+      background: white;
+      padding: 25px;
+    }
+
+    .cart-item {
+      display: grid;
+      grid-template-columns: 105px 1fr auto;
+      gap: 20px;
+      align-items: center;
+      padding: 20px 0;
+      border-bottom: 1px solid #E8DCD0;
+    }
+
+    .cart-item:first-child {
+      padding-top: 0;
+    }
+
+    .cart-item:last-child {
+      border-bottom: none;
+    }
+
+    .cart-item img {
+      width: 105px;
+      height: 115px;
+      object-fit: cover;
+    }
+
+    .item-details h3 {
+      font-family: Georgia, serif;
+      color: #594538;
+      font-size: 17px;
+      margin: 0 0 10px;
+    }
+
+    .item-price {
+      color: #8A6E5A;
+      font-size: 14px;
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+
+    .quantity-control {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .quantity-control button {
+      width: 27px;
+      height: 27px;
+      border: 1px solid #D8C8BA;
+      background: #F8F5F1;
+      color: #594538;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .quantity-control button:hover {
+      background: #E8DCD0;
+    }
+
+    .quantity-control span {
+      font-size: 13px;
+      min-width: 15px;
+      text-align: center;
+    }
+
+    .item-subtotal {
+      color: #594538;
+      font-size: 13px;
+      font-weight: bold;
+      text-align: right;
+    }
+
+    .remove-btn {
+      display: block;
+      margin-top: 12px;
+      border: none;
+      background: none;
+      color: #9B7563;
+      font-size: 11px;
+      cursor: pointer;
+      text-decoration: underline;
+    }
+
+    /* ORDER SUMMARY */
+    .order-summary {
+      background: white;
+      padding: 30px;
+      box-shadow: 0 3px 12px rgba(0, 0, 0, 0.04);
+    }
+
+    .order-summary h3 {
+      font-family: Georgia, serif;
+      color: #594538;
+      font-size: 23px;
+      margin-bottom: 25px;
+    }
+
+    .summary-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+      color: #82766D;
+      font-size: 13px;
+      margin-bottom: 18px;
+    }
+
+    .summary-total {
+      border-top: 1px solid #D8C8BA;
+      padding-top: 20px;
+      margin-top: 20px;
+      color: #594538;
+      font-size: 16px;
+      font-weight: bold;
+    }
+
+    .checkout-btn {
+      display: block;
+      width: 100%;
+      text-align: center;
+      background: #594538;
+      color: white;
+      border: none;
+      padding: 15px;
+      margin-top: 25px;
+      font-size: 11px;
+      letter-spacing: 1px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .checkout-btn:hover {
+      background: #B7A18F;
+      color: white;
+    }
+
+    .continue-shopping {
+      display: block;
+      text-align: center;
+      color: #8A6E5A;
+      font-size: 12px;
+      margin-top: 17px;
+    }
+
+    .continue-shopping:hover {
+      color: #594538;
+    }
+
+    /* EMPTY CART */
+    .empty-cart {
+      display: none;
+      text-align: center;
+      padding: 65px 20px;
+      background: white;
+    }
+
+    .empty-cart h3 {
+      font-family: Georgia, serif;
+      color: #594538;
+      font-size: 25px;
+      margin-bottom: 12px;
+    }
+
+    .empty-cart p {
+      color: #82766D;
+      font-size: 13px;
+      margin-bottom: 25px;
+      line-height: 1.7;
+    }
+
+    .shop-button {
+      display: inline-block;
+      background: #594538;
+      color: white;
+      padding: 13px 25px;
+      font-size: 11px;
+      letter-spacing: 1px;
+      transition: 0.3s;
+    }
+
+    .shop-button:hover {
+      background: #B7A18F;
+      color: white;
+    }
+
+    /* FOOTER */
+    .site-footer {
+      background: #594538;
+      color: white;
+      padding: 45px 7% 25px;
+    }
+
+    .site-footer-container {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 40px;
+      max-width: 1150px;
+      margin: auto;
+    }
+
+    .site-footer-logo {
+      font-size: 25px;
+      letter-spacing: 3px;
+      margin-bottom: 12px;
+    }
+
+    .site-footer-about p {
+      color: #E8DCD0;
+      font-size: 13px;
+      max-width: 300px;
+      line-height: 1.8;
+    }
+
+    .site-footer-links h3 {
+      font-size: 14px;
+      margin-bottom: 15px;
+      letter-spacing: 1px;
+    }
+
+    .site-footer-links a {
+      display: block;
+      color: #E8DCD0;
+      font-size: 13px;
+      margin-bottom: 9px;
+    }
+
+    .site-footer-links a:hover {
+      color: white;
+    }
+
+    .site-copyright {
+      border-top: 1px solid #9A8170;
+      text-align: center;
+      margin-top: 35px;
+      padding-top: 20px;
+      color: #E8DCD0;
+      font-size: 11px;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 800px) {
+      .cart-container {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .site-footer-container {
+        grid-template-columns: 1fr;
+        gap: 25px;
+      }
+    }
+
+    @media (max-width: 650px) {
+      .navbar {
+        flex-direction: column;
+        gap: 17px;
+      }
+
+      .nav-links {
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 15px;
+      }
+
+      .page-banner {
+        height: 260px;
+      }
+
+      .page-banner h1 {
+        font-size: 32px;
+      }
+
+      .cart-section {
+        padding: 45px 5%;
+      }
+
+      .cart-item {
+        grid-template-columns: 80px 1fr;
+        gap: 13px;
+      }
+
+      .cart-item img {
+        width: 80px;
+        height: 95px;
+      }
+
+      .item-subtotal {
+        grid-column: 2;
+        text-align: left;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ANNOUNCEMENT -->
+  <div class="announcement">
+    ELEGANCE MADE PERSONAL — DISCOVER YOUR STYLE
+  </div>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <a href="index.html" class="logo">BILLAYA</a>
+
+    <div class="nav-links">
+      <a href="index.html">HOME</a>
+      <a href="shop.html">SHOP</a>
+      <a href="about.html">ABOUT US</a>
+      <a href="contact.html">CONTACT</a>
+      <a href="wishlist.html">WISHLIST</a>
+      <a href="cart.html" class="active">BAG (<span id="cartCount">0</span>)</a>
+    </div>
+  </nav>
+
+  <!-- PAGE BANNER -->
+  <section class="page-banner">
+    <h1>SHOPPING BAG</h1>
+    <p>Your selected pieces are waiting for you.</p>
+  </section>
+
+  <!-- CART SECTION -->
+  <section class="cart-section">
+
+    <div class="cart-heading">
+      <h2>My Shopping Bag</h2>
+      <p id="itemCount">0 items in your bag</p>
+    </div>
+
+    <div class="cart-container" id="cartContainer">
+
+      <!-- CART ITEMS -->
+      <div class="cart-items" id="cartItems">
+      </div>
+
+      <!-- ORDER SUMMARY -->
+      <div class="order-summary">
+
+        <h3>Order Summary</h3>
+
+        <div class="summary-row">
+          <span>Subtotal</span>
+          <span id="subtotal">Rp 0</span>
+        </div>
+
+        <div class="summary-row">
+          <span>Shipping</span>
+          <span>Calculated at checkout</span>
+        </div>
+
+        <div class="summary-row summary-total">
+          <span>Total</span>
+          <span id="total">Rp 0</span>
+        </div>
+
+        <a href="checkout.html" class="checkout-btn">
+          PROCEED TO CHECKOUT
+        </a>
+
+        <a href="shop.html" class="continue-shopping">
+          Continue Shopping
+        </a>
+
+      </div>
+
+    </div>
+
+    <!-- EMPTY CART -->
+    <div class="empty-cart" id="emptyCart">
+
+      <h3>Your Shopping Bag is Empty</h3>
+
+      <p>
+        You haven't added any products to your bag yet.
+        Explore our collection and find your favorites.
+      </p>
+
+      <a href="shop.html" class="shop-button">
+        EXPLORE PRODUCTS
+      </a>
+
+    </div>
+
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+
+    <div class="site-footer-container">
+
+      <div class="site-footer-about">
+        <div class="site-footer-logo">BILLAYA</div>
+        <p>
+          Discover your personal elegance with our
+          beautiful collection of women's accessories.
+        </p>
+      </div>
+
+      <div class="site-footer-links">
+        <h3>QUICK LINKS</h3>
+        <a href="index.html">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="about.html">About Us</a>
+        <a href="contact.html">Contact</a>
+      </div>
+
+      <div class="site-footer-links">
+        <h3>MY ACCOUNT</h3>
+        <a href="wishlist.html">My Wishlist</a>
+        <a href="cart.html">Shopping Bag</a>
+        <a href="checkout.html">Checkout</a>
+      </div>
+
+    </div>
+
+    <div class="site-copyright">
+      © 2026 BILLAYA Official Store. All Rights Reserved.
+    </div>
+
+  </footer>
+
+  <!-- JAVASCRIPT -->
+  <script>
+
+    // GET CART DATA
+    function getCart() {
+      return JSON.parse(localStorage.getItem("billayaCart")) || [];
+    }
+
+    // SAVE CART DATA
+    function saveCart(cart) {
+      localStorage.setItem("billayaCart", JSON.stringify(cart));
+    }
+
+    // FORMAT RUPIAH
+    function formatRupiah(number) {
+      return "Rp " + Number(number).toLocaleString("id-ID");
+    }
+
+    // UPDATE CART COUNT
+    function updateCartCount(cart) {
+      let totalItems = cart.reduce(function (total, item) {
+        return total + (Number(item.quantity) || 0);
+      }, 0);
+
+      document.getElementById("cartCount").textContent = totalItems;
+    }
+
+    // DISPLAY CART
+    function displayCart() {
+
+      let cart = getCart();
+
+      let cartItems = document.getElementById("cartItems");
+      let cartContainer = document.getElementById("cartContainer");
+      let emptyCart = document.getElementById("emptyCart");
+
+      cartItems.innerHTML = "";
+
+      let totalQuantity = 0;
+      let subtotal = 0;
+
+      cart.forEach(function (product, index) {
+
+        let quantity = Number(product.quantity) || 1;
+        let price = Number(product.price) || 0;
+        let itemSubtotal = price * quantity;
+
+        totalQuantity += quantity;
+        subtotal += itemSubtotal;
+
+        let item = document.createElement("div");
+        item.className = "cart-item";
+
+        let image = document.createElement("img");
+        image.src = product.image || "";
+        image.alt = product.name || "BILLAYA Product";
+
+        image.onerror = function () {
+          this.src = "https://placehold.co/400x400/F8F5F1/594538?text=BILLAYA";
+        };
+
+        let details = document.createElement("div");
+        details.className = "item-details";
+
+        let name = document.createElement("h3");
+        name.textContent = product.name || "Product";
+
+        let priceText = document.createElement("div");
+        priceText.className = "item-price";
+        priceText.textContent = formatRupiah(price);
+
+        let quantityControl = document.createElement("div");
+        quantityControl.className = "quantity-control";
+
+        let minusButton = document.createElement("button");
+        minusButton.textContent = "-";
+        minusButton.type = "button";
+
+        minusButton.addEventListener("click", function () {
+          changeQuantity(index, -1);
+        });
+
+        let quantityText = document.createElement("span");
+        quantityText.textContent = quantity;
+
+        let plusButton = document.createElement("button");
+        plusButton.textContent = "+";
+        plusButton.type = "button";
+
+        plusButton.addEventListener("click", function () {
+          changeQuantity(index, 1);
+        });
+
+        quantityControl.appendChild(minusButton);
+        quantityControl.appendChild(quantityText);
+        quantityControl.appendChild(plusButton);
+
+        details.appendChild(name);
+        details.appendChild(priceText);
+        details.appendChild(quantityControl);
+
+        let subtotalBox = document.createElement("div");
+        subtotalBox.className = "item-subtotal";
+        subtotalBox.textContent = formatRupiah(itemSubtotal);
+
+        let removeButton = document.createElement("button");
+        removeButton.className = "remove-btn";
+        removeButton.textContent = "REMOVE";
+        removeButton.type = "button";
+
+        removeButton.addEventListener("click", function () {
+          removeItem(index);
+        });
+
+        subtotalBox.appendChild(removeButton);
+
+        item.appendChild(image);
+        item.appendChild(details);
+        item.appendChild(subtotalBox);
+
+        cartItems.appendChild(item);
+
+      });
+
+      document.getElementById("itemCount").textContent =
+        totalQuantity + " items in your bag";
+
+      document.getElementById("subtotal").textContent =
+        formatRupiah(subtotal);
+
+      document.getElementById("total").textContent =
+        formatRupiah(subtotal);
+
+      updateCartCount(cart);
+
+      if (cart.length === 0) {
+        cartContainer.style.display = "none";
+        emptyCart.style.display = "block";
+      } else {
+        cartContainer.style.display = "grid";
+        emptyCart.style.display = "none";
+      }
+
+    }
+
+    // CHANGE PRODUCT QUANTITY
+    function changeQuantity(index, change) {
+
+      let cart = getCart();
+
+      if (!cart[index]) return;
+
+      cart[index].quantity =
+        (Number(cart[index].quantity) || 1) + change;
+
+      if (cart[index].quantity <= 0) {
+        cart.splice(index, 1);
+      }
+
+      saveCart(cart);
+      displayCart();
+
+    }
+
+    // REMOVE PRODUCT
+    function removeItem(index) {
+
+      let cart = getCart();
+
+      cart.splice(index, 1);
+
+      saveCart(cart);
+      displayCart();
+
+    }
+
+    // INITIALIZE PAGE
+    displayCart();
+
+  </script>
+
+</body>
+
+</html>

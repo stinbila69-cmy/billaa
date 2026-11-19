@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>BILLAYA | Contact Us</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: #F8F5F1;
+      color: #292725;
+      font-family: Arial, sans-serif;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    /* ANNOUNCEMENT */
+    .announcement {
+      background: #594538;
+      color: white;
+      text-align: center;
+      padding: 10px;
+      font-size: 11px;
+      letter-spacing: 2px;
+    }
+
+    /* NAVBAR */
+    .navbar {
+      background: #F8F5F1;
+      padding: 18px 7%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .logo {
+      font-family: Georgia, serif;
+      font-size: 27px;
+      font-weight: bold;
+      letter-spacing: 4px;
+      color: #594538;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 27px;
+    }
+
+    .nav-links a {
+      color: #594538;
+      font-size: 12px;
+      letter-spacing: 1px;
+      transition: 0.3s;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: #B7A18F;
+    }
+
+    /* PAGE BANNER */
+    .page-banner {
+      height: 340px;
+      background:
+        linear-gradient(rgba(41, 39, 37, 0.30), rgba(41, 39, 37, 0.30)),
+        url("https://i.pinimg.com/736x/fc/48/f5/fc48f5096b11b1e6e62a5938a3d84125.jpg");
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .page-banner h1 {
+      font-family: Georgia, serif;
+      font-size: 43px;
+      color: white;
+      letter-spacing: 4px;
+      margin-bottom: 15px;
+    }
+
+    .page-banner p {
+      color: white;
+      font-size: 14px;
+      letter-spacing: 1px;
+    }
+
+    /* CONTACT SECTION */
+    .contact-section {
+      max-width: 1150px;
+      margin: auto;
+      padding: 70px 7%;
+    }
+
+    .section-heading {
+      text-align: center;
+      margin-bottom: 45px;
+    }
+
+    .section-heading h2 {
+      font-family: Georgia, serif;
+      color: #594538;
+      font-size: 30px;
+      margin-bottom: 12px;
+    }
+
+    .section-heading p {
+      color: #82766D;
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    .contact-container {
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      gap: 45px;
+      align-items: start;
+    }
+
+    /* CONTACT INFORMATION */
+    .contact-info {
+      background: #E8DCD0;
+      padding: 35px;
+      border-radius: 4px;
+    }
+
+    .contact-info h3 {
+      font-family: Georgia, serif;
+      font-size: 24px;
+      color: #594538;
+      margin-bottom: 15px;
+    }
+
+    .contact-info>p {
+      color: #725E50;
+      font-size: 13px;
+      line-height: 1.8;
+      margin-bottom: 30px;
+    }
+
+    .info-item {
+      margin-bottom: 23px;
+    }
+
+    .info-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .info-item h4 {
+      color: #594538;
+      font-size: 12px;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+      font-weight: bold;
+    }
+
+    .info-item p {
+      color: #725E50;
+      font-size: 13px;
+      line-height: 1.8;
+    }
+
+    /* CONTACT FORM */
+    .contact-form {
+      background: white;
+      padding: 35px;
+      border-radius: 4px;
+      box-shadow: 0 3px 15px rgba(0, 0, 0, 0.04);
+    }
+
+    .contact-form h3 {
+      font-family: Georgia, serif;
+      color: #594538;
+      font-size: 24px;
+      margin-bottom: 25px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      color: #594538;
+      font-size: 12px;
+      letter-spacing: 1px;
+      margin-bottom: 9px;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 13px;
+      border: 1px solid #DED4CB;
+      background: #F8F5F1;
+      font-family: Arial, sans-serif;
+      font-size: 13px;
+      outline: none;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      border-color: #B7A18F;
+    }
+
+    .form-group textarea {
+      height: 130px;
+      resize: vertical;
+    }
+
+    .submit-btn {
+      background: #594538;
+      color: white;
+      border: none;
+      padding: 14px 30px;
+      font-size: 12px;
+      letter-spacing: 1px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .submit-btn:hover {
+      background: #B7A18F;
+    }
+
+    .success-message {
+      display: none;
+      background: #E8DCD0;
+      color: #594538;
+      padding: 15px;
+      margin-top: 20px;
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    /* FOOTER */
+    .site-footer {
+      background: #594538;
+      color: white;
+      padding: 45px 7% 25px;
+    }
+
+    .site-footer-container {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 40px;
+      max-width: 1150px;
+      margin: auto;
+    }
+
+    .site-footer-logo {
+      font-size: 25px;
+      letter-spacing: 3px;
+      margin-bottom: 12px;
+    }
+
+    .site-footer-about p {
+      color: #E8DCD0;
+      font-size: 13px;
+      max-width: 300px;
+      line-height: 1.8;
+    }
+
+    .site-footer-links h3 {
+      font-size: 14px;
+      margin-bottom: 15px;
+      letter-spacing: 1px;
+    }
+
+    .site-footer-links a {
+      display: block;
+      color: #E8DCD0;
+      font-size: 13px;
+      margin-bottom: 9px;
+    }
+
+    .site-footer-links a:hover {
+      color: white;
+    }
+
+    .site-copyright {
+      border-top: 1px solid #9A8170;
+      text-align: center;
+      margin-top: 35px;
+      padding-top: 20px;
+      color: #E8DCD0;
+      font-size: 11px;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .contact-container {
+        grid-template-columns: 1fr;
+      }
+
+      .site-footer-container {
+        grid-template-columns: 1fr;
+        gap: 25px;
+      }
+    }
+
+    @media (max-width: 650px) {
+      .navbar {
+        flex-direction: column;
+        gap: 17px;
+      }
+
+      .nav-links {
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 15px;
+      }
+
+      .page-banner {
+        height: 260px;
+      }
+
+      .page-banner h1 {
+        font-size: 32px;
+      }
+
+      .contact-section {
+        padding: 45px 5%;
+      }
+
+      .contact-info,
+      .contact-form {
+        padding: 25px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ANNOUNCEMENT -->
+  <div class="announcement">
+    ELEGANCE MADE PERSONAL — DISCOVER YOUR STYLE
+  </div>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <a href="index.html" class="logo">BILLAYA</a>
+
+    <div class="nav-links">
+      <a href="index.html">HOME</a>
+      <a href="shop.html">SHOP</a>
+      <a href="about.html">ABOUT US</a>
+      <a href="contact.html" class="active">CONTACT</a>
+      <a href="wishlist.html">WISHLIST</a>
+      <a href="cart.html">BAG (<span id="cartCount">0</span>)</a>
+    </div>
+  </nav>
+
+  <!-- PAGE BANNER -->
+  <section class="page-banner">
+    <h1>CONTACT US</h1>
+    <p>We would love to hear from you.</p>
+  </section>
+
+  <!-- CONTACT SECTION -->
+  <section class="contact-section">
+
+    <div class="section-heading">
+      <h2>Get In Touch</h2>
+      <p>
+        Have a question or need assistance?
+        Feel free to contact our team.
+        We are always happy to help you.
+      </p>
+    </div>
+
+    <div class="contact-container">
+
+      <!-- CONTACT INFORMATION -->
+      <div class="contact-info">
+
+        <h3>Contact Information</h3>
+
+        <p>
+          Thank you for visiting BILLAYA.
+          We are committed to providing the best shopping
+          experience for our customers. Contact us for
+          any questions about our products and services.
+        </p>
+
+        <div class="info-item">
+          <h4>EMAIL ADDRESS</h4>
+          <p>hello@billaya-store.com</p>
+        </div>
+
+        <div class="info-item">
+          <h4>PHONE / WHATSAPP</h4>
+          <p>+62 857-1234-5678</p>
+        </div>
+
+        <div class="info-item">
+          <h4>INSTAGRAM</h4>
+          <p>@billaya.official</p>
+        </div>
+
+        <div class="info-item">
+          <h4>STORE ADDRESS</h4>
+          <p>
+            Jl. Jenderal Sudirman No. 28,<br>
+            Cilegon, Banten, Indonesia.
+          </p>
+        </div>
+
+        <div class="info-item">
+          <h4>BUSINESS HOURS</h4>
+          <p>Monday - Saturday: 09.00 - 17.00 WIB</p>
+          <p>Sunday: 10.00 - 15.00 WIB</p>
+        </div>
+
+        <div class="info-item">
+          <h4>CUSTOMER SERVICE</h4>
+          <p>
+            Product Information<br>
+            Order Assistance<br>
+            Payment & Shipping<br>
+            Returns & Exchanges
+          </p>
+        </div>
+
+      </div>
+
+      <!-- CONTACT FORM -->
+      <div class="contact-form">
+
+        <h3>Send Us A Message</h3>
+
+        <form id="contactForm">
+
+          <div class="form-group">
+            <label for="name">YOUR NAME</label>
+            <input type="text" id="name" placeholder="Enter your name" required>
+          </div>
+
+          <div class="form-group">
+            <label for="email">YOUR EMAIL</label>
+            <input type="email" id="email" placeholder="Enter your email" required>
+          </div>
+
+          <div class="form-group">
+            <label for="subject">SUBJECT</label>
+            <input type="text" id="subject" placeholder="Enter message subject" required>
+          </div>
+
+          <div class="form-group">
+            <label for="message">YOUR MESSAGE</label>
+            <textarea id="message" placeholder="Write your message here..." required></textarea>
+          </div>
+
+          <button type="submit" class="submit-btn">
+            SEND MESSAGE
+          </button>
+
+          <div class="success-message" id="successMessage">
+            Thank you for contacting BILLAYA!
+            Your message has been recorded in this demo.
+          </div>
+
+        </form>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+
+    <div class="site-footer-container">
+
+      <div class="site-footer-about">
+        <div class="site-footer-logo">BILLAYA</div>
+        <p>
+          Discover your personal elegance with our
+          beautiful collection of women's accessories.
+        </p>
+      </div>
+
+      <div class="site-footer-links">
+        <h3>QUICK LINKS</h3>
+        <a href="index.html">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="about.html">About Us</a>
+        <a href="contact.html">Contact</a>
+      </div>
+
+      <div class="site-footer-links">
+        <h3>MY ACCOUNT</h3>
+        <a href="wishlist.html">My Wishlist</a>
+        <a href="cart.html">Shopping Bag</a>
+        <a href="checkout.html">Checkout</a>
+      </div>
+
+    </div>
+
+    <div class="site-copyright">
+      © 2026 BILLAYA Official Store. All Rights Reserved.
+    </div>
+
+  </footer>
+
+  <!-- JAVASCRIPT -->
+  <script>
+
+    // CART COUNTER
+    function updateCartCount() {
+      let cart = JSON.parse(localStorage.getItem("billayaCart")) || [];
+
+      let totalItems = cart.reduce(function (total, item) {
+        return total + (Number(item.quantity) || 0);
+      }, 0);
+
+      document.getElementById("cartCount").textContent = totalItems;
+    }
+
+    updateCartCount();
+
+    // CONTACT FORM
+    document.getElementById("contactForm").addEventListener("submit", function (event) {
+      event.preventDefault();
+
+      document.getElementById("successMessage").style.display = "block";
+
+      this.reset();
+    });
+
+  </script>
+
+</body>
+
+</html>
