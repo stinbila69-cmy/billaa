@@ -477,7 +477,6 @@
 
     const products = [
 
-      // EARRINGS
       {
         id: 1,
         name: "Golden Hoop Earrings",
@@ -507,7 +506,6 @@
         image: "https://i.pinimg.com/736x/e4/b5/b5/e4b5b5710fa2830b6a99351efe5fa82f.jpg"
       },
 
-      // NECKLACES
       {
         id: 5,
         name: "Golden Pendant Necklace",
@@ -537,7 +535,6 @@
         image: "https://i.pinimg.com/1200x/4d/96/39/4d9639f18a18b165e7b68b6b6fda6a57.jpg"
       },
 
-      // BRACELETS
       {
         id: 9,
         name: "Classic Gold Bracelet",
@@ -567,7 +564,6 @@
         image: "https://i.pinimg.com/1200x/53/fa/2f/53fa2ffd48049c3932d437b29b5f557f.jpg"
       },
 
-      // RINGS
       {
         id: 13,
         name: "Luxury Diamond Ring",
@@ -597,7 +593,6 @@
         image: "https://i.pinimg.com/736x/69/88/ac/6988ac5001ec3cdb0bbd83f61d69a259.jpg"
       },
 
-      // HAIR ACCESSORIES
       {
         id: 17,
         name: "Satin Hair Bow",
@@ -627,7 +622,6 @@
         image: "https://img.staticdj.com/59cd10f1ba2336eba8caaaf22c623b09_750x.jpeg"
       },
 
-      // ANKLETS
       {
         id: 21,
         name: "Golden Chain Anklet",
@@ -650,7 +644,6 @@
         image: "https://i.pinimg.com/736x/32/c5/1d/32c51dfd6921ec6f150d28a19999ee42.jpg"
       },
 
-      // HAIR CLIPS & CLAWS
       {
         id: 24,
         name: "Classic Beige Claw Clip",
@@ -673,7 +666,6 @@
         image: "https://i.pinimg.com/736x/53/5a/d8/535ad815f0bed84b39a5ffb7870d626b.jpg"
       },
 
-      // BROOCHES
       {
         id: 27,
         name: "Golden Floral Brooch",
@@ -696,7 +688,6 @@
         image: "https://i.pinimg.com/1200x/a3/12/fe/a312fe863f32dfc562be6a23043cdb94.jpg"
       },
 
-      // JEWELRY SETS
       {
         id: 30,
         name: "Classic Pearl Jewelry Set",
@@ -719,7 +710,6 @@
         image: "https://i.pinimg.com/736x/36/98/2e/36982e8257ec314d7a3b7cbafc8906a9.jpg"
       },
 
-      // FASHION ACCESSORIES
       {
         id: 33,
         name: "Silk Beige Scarf",
@@ -882,6 +872,15 @@
     document.getElementById("categoryFilter").addEventListener("change", displayProducts);
 
     document.getElementById("sortFilter").addEventListener("change", displayProducts);
+
+    const selectedCategory = new URLSearchParams(window.location.search).get("category");
+    const categorySelect = document.getElementById("categoryFilter");
+
+    if (selectedCategory && Array.from(categorySelect.options).some(function (option) {
+      return option.value === selectedCategory;
+    })) {
+      categorySelect.value = selectedCategory;
+    }
 
     displayProducts();
 

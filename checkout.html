@@ -23,7 +23,6 @@
       text-decoration: none;
     }
 
-    /* ANNOUNCEMENT */
     .announcement {
       background: #594538;
       color: white;
@@ -33,7 +32,6 @@
       letter-spacing: 2px;
     }
 
-    /* NAVBAR */
     .navbar {
       background: #F8F5F1;
       padding: 18px 7%;
@@ -72,7 +70,6 @@
       color: #B7A18F;
     }
 
-    /* PAGE BANNER */
     .page-banner {
       background: #E8DCD0;
       text-align: center;
@@ -92,7 +89,6 @@
       font-size: 13px;
     }
 
-    /* CHECKOUT */
     .checkout-container {
       max-width: 1150px;
       margin: 55px auto;
@@ -157,7 +153,6 @@
       gap: 15px;
     }
 
-    /* ORDER SUMMARY */
     .summary-card {
       background: white;
       padding: 30px;
@@ -244,7 +239,6 @@
       line-height: 1.6;
     }
 
-    /* EMPTY CART */
     .empty-cart {
       max-width: 600px;
       margin: 70px auto;
@@ -274,7 +268,6 @@
       letter-spacing: 1px;
     }
 
-    /* FOOTER */
     .site-footer {
       background: #594538;
       color: white;
@@ -329,7 +322,6 @@
       font-size: 11px;
     }
 
-    /* RESPONSIVE */
     @media (max-width: 850px) {
       .checkout-container {
         grid-template-columns: 1fr;
@@ -376,12 +368,10 @@
 
 <body>
 
-  <!-- ANNOUNCEMENT -->
   <div class="announcement">
     ELEGANCE MADE PERSONAL — DISCOVER YOUR STYLE
   </div>
 
-  <!-- NAVBAR -->
   <nav class="navbar">
     <a href="index.html" class="logo">BILLAYA</a>
 
@@ -397,18 +387,15 @@
     </div>
   </nav>
 
-  <!-- PAGE BANNER -->
   <section class="page-banner">
     <h1>CHECKOUT</h1>
     <p>Complete your details and confirm your order.</p>
   </section>
 
-  <!-- CHECKOUT CONTENT -->
   <main id="checkoutContent">
 
     <div class="checkout-container">
 
-      <!-- CUSTOMER INFORMATION -->
       <section class="checkout-card">
         <h2>Billing & Shipping Details</h2>
 
@@ -481,7 +468,6 @@
         </form>
       </section>
 
-      <!-- ORDER SUMMARY -->
       <aside class="summary-card">
         <h2>Your Order</h2>
 
@@ -512,7 +498,6 @@
 
   </main>
 
-  <!-- FOOTER -->
   <footer class="site-footer">
 
     <div class="site-footer-container">
@@ -548,10 +533,8 @@
 
   </footer>
 
-  <!-- JAVASCRIPT -->
   <script>
 
-    // GET CART DATA
     function getCart() {
       try {
         const cart = JSON.parse(localStorage.getItem("billayaCart"));
@@ -563,12 +546,10 @@
 
     let cart = getCart();
 
-    // FORMAT RUPIAH
     function formatRupiah(number) {
       return "Rp " + Number(number || 0).toLocaleString("id-ID");
     }
 
-    // UPDATE CART COUNT
     function updateCartCount() {
       let totalItems = cart.reduce(function (total, item) {
         return total + (Number(item.quantity) || 0);
@@ -577,7 +558,6 @@
       document.getElementById("cartCount").textContent = totalItems;
     }
 
-    // DISPLAY ORDER SUMMARY
     function displayOrder() {
 
       const checkoutContent = document.getElementById("checkoutContent");
@@ -630,7 +610,6 @@
       updateTotal();
     }
 
-    // PREVENT HTML INJECTION IN PRODUCT NAMES
     function escapeHTML(value) {
       return String(value ?? "").replace(/[&<>"']/g, function (character) {
         return {
@@ -643,7 +622,6 @@
       });
     }
 
-    // CALCULATE SHIPPING AND TOTAL
     function updateTotal() {
 
       const subtotal = cart.reduce(function (total, item) {
@@ -662,12 +640,10 @@
         formatRupiah(total);
     }
 
-    // SHIPPING CHANGE
     document.getElementById("shipping").addEventListener("change", function () {
       updateTotal();
     });
 
-    // SUBMIT ORDER
     document.getElementById("checkoutForm").addEventListener("submit", function (event) {
 
       event.preventDefault();
@@ -720,18 +696,14 @@
 
       };
 
-      // SAVE ORDER
       localStorage.setItem("billayaLastOrder", JSON.stringify(order));
 
-      // CLEAR SHOPPING BAG
       localStorage.setItem("billayaCart", JSON.stringify([]));
 
-      // GO TO SUCCESS PAGE
       window.location.href = "success.html";
 
     });
 
-    // INITIALIZE PAGE
     updateCartCount();
     displayOrder();
 

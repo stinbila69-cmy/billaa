@@ -23,7 +23,6 @@
       text-decoration: none;
     }
 
-    /* ANNOUNCEMENT */
     .announcement {
       background: #594538;
       color: white;
@@ -33,7 +32,6 @@
       letter-spacing: 2px;
     }
 
-    /* NAVBAR */
     .navbar {
       background: #F8F5F1;
       padding: 18px 7%;
@@ -72,7 +70,6 @@
       color: #B7A18F;
     }
 
-    /* PAGE BANNER */
     .page-banner {
       height: 340px;
       background:
@@ -102,7 +99,6 @@
       letter-spacing: 1px;
     }
 
-    /* CONTACT SECTION */
     .contact-section {
       max-width: 1150px;
       margin: auto;
@@ -134,7 +130,6 @@
       align-items: start;
     }
 
-    /* CONTACT INFORMATION */
     .contact-info {
       background: #E8DCD0;
       padding: 35px;
@@ -177,7 +172,6 @@
       line-height: 1.8;
     }
 
-    /* CONTACT FORM */
     .contact-form {
       background: white;
       padding: 35px;
@@ -250,7 +244,176 @@
       line-height: 1.6;
     }
 
-    /* FOOTER */
+    .quick-contact {
+      max-width: 1150px;
+      margin: -50px auto 0;
+      padding: 0 7%;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      position: relative;
+      z-index: 5;
+    }
+
+    .quick-card {
+      display: block;
+      background: white;
+      color: #594538;
+      padding: 28px 20px;
+      text-align: center;
+      border-radius: 4px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.07);
+      transition: 0.3s;
+    }
+
+    .quick-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .quick-icon {
+      width: 48px;
+      height: 48px;
+      line-height: 48px;
+      margin: 0 auto 14px;
+      border-radius: 50%;
+      background: #E8DCD0;
+      font-size: 20px;
+    }
+
+    .quick-card h4 {
+      font-family: Georgia, serif;
+      font-size: 16px;
+      font-weight: normal;
+      margin-bottom: 6px;
+    }
+
+    .quick-card p {
+      color: #82766D;
+      font-size: 12px;
+      line-height: 1.6;
+      word-break: break-word;
+    }
+
+    .map-section {
+      max-width: 1150px;
+      margin: auto;
+      padding: 0 7% 75px;
+    }
+
+    .map-container {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 30px;
+      align-items: stretch;
+    }
+
+    .map-details {
+      background: #594538;
+      color: white;
+      padding: 35px;
+      border-radius: 4px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .map-details h3 {
+      font-family: Georgia, serif;
+      font-size: 24px;
+      font-weight: normal;
+      margin-bottom: 15px;
+    }
+
+    .map-details p {
+      color: #E8DCD0;
+      font-size: 13px;
+      line-height: 1.8;
+      margin-bottom: 12px;
+    }
+
+    .map-btn {
+      align-self: flex-start;
+      display: inline-block;
+      background: #B7A18F;
+      color: white;
+      padding: 13px 26px;
+      font-size: 12px;
+      letter-spacing: 1px;
+      margin-top: 10px;
+      transition: 0.3s;
+    }
+
+    .map-btn:hover {
+      background: #E8DCD0;
+      color: #594538;
+    }
+
+    .map-frame {
+      border-radius: 4px;
+      overflow: hidden;
+      box-shadow: 0 3px 15px rgba(0, 0, 0, 0.06);
+      min-height: 380px;
+    }
+
+    .map-frame iframe {
+      display: block;
+      width: 100%;
+      height: 100%;
+      min-height: 380px;
+      border: 0;
+    }
+
+    .faq-section {
+      background: #E8DCD0;
+      padding: 75px 7%;
+    }
+
+    .faq-container {
+      max-width: 800px;
+      margin: auto;
+    }
+
+    .faq-item {
+      background: #F8F5F1;
+      margin-bottom: 12px;
+      border-radius: 4px;
+    }
+
+    .faq-item summary {
+      position: relative;
+      cursor: pointer;
+      list-style: none;
+      padding: 18px 50px 18px 22px;
+      font-family: Georgia, serif;
+      font-size: 16px;
+      color: #594538;
+    }
+
+    .faq-item summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .faq-item summary::after {
+      content: "+";
+      position: absolute;
+      right: 22px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 20px;
+      color: #B7A18F;
+    }
+
+    .faq-item[open] summary::after {
+      content: "−";
+    }
+
+    .faq-item p {
+      padding: 0 22px 20px;
+      color: #725E50;
+      font-size: 13px;
+      line-height: 1.8;
+    }
+
     .site-footer {
       background: #594538;
       color: white;
@@ -304,9 +467,16 @@
       font-size: 11px;
     }
 
-    /* RESPONSIVE */
     @media (max-width: 768px) {
       .contact-container {
+        grid-template-columns: 1fr;
+      }
+
+      .quick-contact {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .map-container {
         grid-template-columns: 1fr;
       }
 
@@ -344,18 +514,43 @@
       .contact-form {
         padding: 25px;
       }
+
+      .quick-contact {
+        margin-top: -30px;
+        padding: 0 5%;
+        gap: 12px;
+      }
+
+      .quick-card {
+        padding: 22px 12px;
+      }
+
+      .map-section {
+        padding: 0 5% 45px;
+      }
+
+      .map-details {
+        padding: 25px;
+      }
+
+      .map-frame,
+      .map-frame iframe {
+        min-height: 300px;
+      }
+
+      .faq-section {
+        padding: 50px 5%;
+      }
     }
   </style>
 </head>
 
 <body>
 
-  <!-- ANNOUNCEMENT -->
   <div class="announcement">
     ELEGANCE MADE PERSONAL — DISCOVER YOUR STYLE
   </div>
 
-  <!-- NAVBAR -->
   <nav class="navbar">
     <a href="index.html" class="logo">BILLAYA</a>
 
@@ -369,13 +564,37 @@
     </div>
   </nav>
 
-  <!-- PAGE BANNER -->
   <section class="page-banner">
     <h1>CONTACT US</h1>
     <p>We would love to hear from you.</p>
   </section>
 
-  <!-- CONTACT SECTION -->
+  <section class="quick-contact">
+    <a href="mailto:hello@billaya-store.com" class="quick-card">
+      <div class="quick-icon">✉</div>
+      <h4>Email Us</h4>
+      <p>hello@billaya-store.com</p>
+    </a>
+
+    <a href="https://wa.me/6285712345678" target="_blank" rel="noopener" class="quick-card">
+      <div class="quick-icon">☎</div>
+      <h4>WhatsApp</h4>
+      <p>+62 857-1234-5678</p>
+    </a>
+
+    <a href="https://www.instagram.com/billaya.official" target="_blank" rel="noopener" class="quick-card">
+      <div class="quick-icon">◎</div>
+      <h4>Instagram</h4>
+      <p>@billaya.official</p>
+    </a>
+
+    <a href="#location" class="quick-card">
+      <div class="quick-icon">⌂</div>
+      <h4>Visit Our Store</h4>
+      <p>Cilegon, Banten</p>
+    </a>
+  </section>
+
   <section class="contact-section">
 
     <div class="section-heading">
@@ -389,7 +608,6 @@
 
     <div class="contact-container">
 
-      <!-- CONTACT INFORMATION -->
       <div class="contact-info">
 
         <h3>Contact Information</h3>
@@ -442,7 +660,6 @@
 
       </div>
 
-      <!-- CONTACT FORM -->
       <div class="contact-form">
 
         <h3>Send Us A Message</h3>
@@ -485,7 +702,99 @@
     </div>
   </section>
 
-  <!-- FOOTER -->
+  <section class="map-section" id="location">
+
+    <div class="section-heading">
+      <h2>Find Our Store</h2>
+      <p>
+        Visit our store and discover the BILLAYA collection in person.
+      </p>
+    </div>
+
+    <div class="map-container">
+
+      <div class="map-details">
+        <h3>BILLAYA Official Store</h3>
+
+        <p>
+          Jl. Jenderal Sudirman No. 28,<br>
+          Cilegon, Banten, Indonesia.
+        </p>
+
+        <p>
+          Monday - Saturday: 09.00 - 17.00 WIB<br>
+          Sunday: 10.00 - 15.00 WIB
+        </p>
+
+        <a href="https://www.google.com/maps/search/?api=1&query=Jl.+Jenderal+Sudirman+No.+28,+Cilegon,+Banten,+Indonesia"
+          target="_blank" rel="noopener" class="map-btn">
+          GET DIRECTIONS
+        </a>
+      </div>
+
+      <div class="map-frame">
+        <iframe
+          src="https://www.google.com/maps?q=Jl.+Jenderal+Sudirman+No.+28,+Cilegon,+Banten,+Indonesia&output=embed"
+          title="BILLAYA store location" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen>
+        </iframe>
+      </div>
+
+    </div>
+
+  </section>
+
+  <section class="faq-section">
+    <div class="faq-container">
+
+      <div class="section-heading">
+        <h2>Frequently Asked Questions</h2>
+        <p>Quick answers to the questions we receive most often.</p>
+      </div>
+
+      <details class="faq-item">
+        <summary>How can I place an order?</summary>
+        <p>
+          Browse our Shop page, add your favorite accessories to your bag,
+          then continue to checkout. You can also message us on WhatsApp
+          if you need help choosing a product.
+        </p>
+      </details>
+
+      <details class="faq-item">
+        <summary>What payment methods are available?</summary>
+        <p>
+          Payment options are shown at checkout. For any payment question,
+          please contact our customer service team via email or WhatsApp.
+        </p>
+      </details>
+
+      <details class="faq-item">
+        <summary>How long does shipping take?</summary>
+        <p>
+          Delivery time depends on your location and the courier you choose.
+          Our team will share an estimate once your order is confirmed.
+        </p>
+      </details>
+
+      <details class="faq-item">
+        <summary>Can I return or exchange a product?</summary>
+        <p>
+          If your item arrives damaged or not as described, please contact us
+          as soon as possible and we will help with a return or an exchange.
+        </p>
+      </details>
+
+      <details class="faq-item">
+        <summary>How can I track my order?</summary>
+        <p>
+          After your order is shipped, we will send the tracking details
+          to you via WhatsApp or email.
+        </p>
+      </details>
+
+    </div>
+  </section>
+
   <footer class="site-footer">
 
     <div class="site-footer-container">
@@ -521,10 +830,8 @@
 
   </footer>
 
-  <!-- JAVASCRIPT -->
   <script>
 
-    // CART COUNTER
     function updateCartCount() {
       let cart = JSON.parse(localStorage.getItem("billayaCart")) || [];
 
@@ -537,7 +844,6 @@
 
     updateCartCount();
 
-    // CONTACT FORM
     document.getElementById("contactForm").addEventListener("submit", function (event) {
       event.preventDefault();
 

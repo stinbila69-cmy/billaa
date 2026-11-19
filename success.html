@@ -23,7 +23,6 @@
       text-decoration: none;
     }
 
-    /* ANNOUNCEMENT */
     .announcement {
       background: #594538;
       color: white;
@@ -33,7 +32,6 @@
       letter-spacing: 2px;
     }
 
-    /* NAVBAR */
     .navbar {
       background: #F8F5F1;
       padding: 18px 7%;
@@ -71,7 +69,6 @@
       color: #B7A18F;
     }
 
-    /* SUCCESS SECTION */
     .success-container {
       max-width: 850px;
       margin: 65px auto;
@@ -132,7 +129,6 @@
       letter-spacing: 1px;
     }
 
-    /* ORDER DETAILS */
     .order-details {
       text-align: left;
       border-top: 1px solid #E8DCD0;
@@ -165,7 +161,6 @@
       font-weight: bold;
     }
 
-    /* PRODUCT LIST */
     .product-section {
       margin-top: 30px;
       text-align: left;
@@ -204,7 +199,6 @@
       white-space: nowrap;
     }
 
-    /* TOTAL */
     .total-section {
       display: flex;
       justify-content: space-between;
@@ -217,7 +211,6 @@
       font-weight: bold;
     }
 
-    /* BUTTONS */
     .success-buttons {
       display: flex;
       justify-content: center;
@@ -259,7 +252,6 @@
       line-height: 1.7;
     }
 
-    /* NO ORDER */
     .no-order {
       text-align: center;
       background: white;
@@ -280,7 +272,6 @@
       line-height: 1.7;
     }
 
-    /* FOOTER */
     .site-footer {
       background: #594538;
       color: white;
@@ -335,7 +326,6 @@
       font-size: 11px;
     }
 
-    /* RESPONSIVE */
     @media (max-width: 650px) {
       .navbar {
         flex-direction: column;
@@ -370,12 +360,10 @@
 
 <body>
 
-  <!-- ANNOUNCEMENT -->
   <div class="announcement">
     ELEGANCE MADE PERSONAL — DISCOVER YOUR STYLE
   </div>
 
-  <!-- NAVBAR -->
   <nav class="navbar">
     <a href="index.html" class="logo">BILLAYA</a>
 
@@ -391,12 +379,10 @@
     </div>
   </nav>
 
-  <!-- SUCCESS CONTENT -->
   <main class="success-container">
     <div id="successContent"></div>
   </main>
 
-  <!-- FOOTER -->
   <footer class="site-footer">
 
     <div class="site-footer-container">
@@ -432,15 +418,12 @@
 
   </footer>
 
-  <!-- JAVASCRIPT -->
   <script>
 
-    // FORMAT RUPIAH
     function formatRupiah(number) {
       return "Rp " + Number(number || 0).toLocaleString("id-ID");
     }
 
-    // PREVENT HTML INJECTION
     function escapeHTML(value) {
       return String(value ?? "").replace(/[&<>"']/g, function (character) {
         return {
@@ -453,7 +436,6 @@
       });
     }
 
-    // GET LAST ORDER
     function getLastOrder() {
       try {
         return JSON.parse(localStorage.getItem("billayaLastOrder"));
@@ -462,7 +444,6 @@
       }
     }
 
-    // UPDATE CART COUNT
     function updateCartCount() {
       let cart = [];
 
@@ -479,7 +460,6 @@
       document.getElementById("cartCount").textContent = totalItems;
     }
 
-    // DISPLAY ORDER
     function displaySuccess() {
 
       const order = getLastOrder();
@@ -636,7 +616,6 @@
       `;
     }
 
-    // INITIALIZE PAGE
     updateCartCount();
     displaySuccess();
 
